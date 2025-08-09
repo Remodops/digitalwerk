@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Digitalwerk – modulare Marketing‑Site (Next.js 14+ App Router, TS strict)
+
+Ziel: Schnelle, barrierearme Site mit Kernseiten und optionalen Modulen via Feature‑Flags.
+
+Tech
+- Next.js 14+/15 (App Router), TypeScript strict
+- Tailwind CSS v4 (nur Core), ESLint + Prettier (Next Defaults)
+- Keine Analytics/Form‑Deps im Core; nur Schnittstellen/Adapter
+
+Struktur
+```
+/src
+  /app/(site)/*pages
+  /components/ui/*        // Button, Input, Card, Section, Container
+  /components/shared/*    // Header, Footer, Nav, Hero, PricingTable, FaqList
+  /modules                // optionale Features
+    /contact              // deaktiviert per Flag
+    /analytics            // Adapter-Pattern, default: none
+    /consent              // Banner/Dialog, optional
+    /blog                 // optional
+  /lib
+    config.ts             // Feature-Flags
+    seo.ts                // Metadata helpers
+    schema.ts             // JSON-LD helpers
+    a11y.ts               // Skiplinks, focus helpers
+  /content
+    /cases/*.mdx          // vorbereitet (Beispiel in Referenzseiten)
+/public
+  /favicons, /images
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffne `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Feature‑Flags (`src/lib/config.ts`)
+- `NEXT_PUBLIC_ENABLE_CONTACT_FORM` (default false)
+- `NEXT_PUBLIC_ENABLE_ANALYTICS` (default false)
+- `NEXT_PUBLIC_ANALYTICS_PROVIDER`: `none` | `umami` | `plausible` (default `none`)
+- `NEXT_PUBLIC_ENABLE_CONSENT` (default false)
+- `NEXT_PUBLIC_ENABLE_BLOG` (default false)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Beispiel `.env.local`
+```
+NEXT_PUBLIC_ENABLE_CONTACT_FORM=true
+NEXT_PUBLIC_ENABLE_ANALYTICS=true
+NEXT_PUBLIC_ANALYTICS_PROVIDER=umami
+NEXT_PUBLIC_ENABLE_CONSENT=true
+NEXT_PUBLIC_ENABLE_BLOG=false
+```
 
-## Learn More
+Module
+- Contact (`src/modules/contact/ContactForm.tsx`)
+  - UI mit ARIA/Labels, kein Backend
+  - Backend nachrüsten (optional):
+    ```ts
+    // /api/contact (Beispiel – nicht aktiv)
+    // import nodemailer from 'nodemailer'
+    // export default async function handler(req, res) {
+    //   const { name, email, message } = req.body
+    //   const transporter = nodemailer.createTransport({
+    //     host: process.env.SMTP_HOST,
+    //     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+    //   })
+    //   await transporter.sendMail({ from: process.env.SMTP_FROM, to: process.env.SMTP_TO, subject: 'Kontakt', text: `${name} <${email}>\n\n${message}` })
+    //   res.status(204).end()
+    // }
+    // Honeypot/Rate‑Limit (Pseudocode): block if hidden "company" filled; limit by IP
+    ```
+  - Externer Dienst: Endpoint‑Hook via `fetch` ersetzen (Formspree/Typedream etc.)
 
-To learn more about Next.js, take a look at the following resources:
+- Analytics Adapter (`src/modules/analytics/AnalyticsProvider.tsx`)
+  - `provider='none'` rendert nichts
+  - Umami/Plausible: Script‑Snippets im Code kommentiert; keine Pakete
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Consent (`src/modules/consent/ConsentBanner.tsx`)
+  - LocalStorage‑Banner, lädt Analytics nach Opt‑In (Callback)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Blog (optional)
+  - Core liefert nur Hinweis‑Seite; Setup unten
 
-## Deploy on Vercel
+SEO & Schema
+- `src/lib/seo.ts`: Title‑Template, Description, OpenGraph
+- `src/lib/schema.ts`: Organization, Service, BreadcrumbList, FAQPage + `<JsonLd />`
+- `robots.txt`, `sitemap.xml`; Manifest/Favicons lokal (PWA optional, auskommentiert)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A11y & Performance
+- WCAG 2.2 AA Basics: Skip‑Link, Landmarken, Fokus‑Ringe, `prefers-reduced-motion`
+- Budgets: JS < 80 KB/Seite, CSS < 80 KB, Startseite < 1 MB
+- Server Components by default, Client nur wo nötig
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Blog aktivieren (optional)
+1) `npm i -D contentlayer next-contentlayer @mdx-js/react`
+2) Contentlayer konfigurieren (siehe Doku)
+3) Inhalte unter `src/content` ablegen
+
+Deploy
+- Vercel: Projekt importieren, `NEXT_PUBLIC_*` Flags setzen
+- AWS S3/CloudFront (Kurz):
+  1. Static Export/Serverless wählen
+  2. Artefakte nach S3 deployen
+  3. CloudFront Distribution inkl. Caching/Compression
+
+Akzeptanzkriterien
+- Build läuft ohne zusätzliche Secrets/Deps
+- Kein externer Traffic ohne Opt‑In/aktivierte Flags
+- Lighthouse (Desktop) ≥ 95, Mobile ≥ 85
+- Tastaturbedienbarkeit komplett; korrekte Fokus‑Reihenfolge
+- Startseite < 1 MB, keine ungenutzten CSS/JS‑Pakete
