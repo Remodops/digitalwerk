@@ -5,6 +5,7 @@ import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { SkipLink } from "@/components/shared/SkipLink";
 import { SKIP_TARGET_ID } from "@/lib/a11y";
+import { ENABLE_ANALYTICS, ENABLE_CONSENT } from "@/lib/config";
 import { ModulesMount } from "@/components/shared/ModulesMount";
 
 export const metadata: Metadata = defaultMetadata;
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className="antialiased">
         <SkipLink />
         <Header />
-        <ModulesMount />
+        {(ENABLE_ANALYTICS || ENABLE_CONSENT) && <ModulesMount />}
         <main id={SKIP_TARGET_ID} role="main">
           {children}
         </main>
