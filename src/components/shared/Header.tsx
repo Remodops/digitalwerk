@@ -67,8 +67,8 @@ export function Header() {
         className={
           `flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ` +
           (isScrolled
-            ? "h-14 bg-black/95 backdrop-blur ring-0 border-b border-white/10"
-            : "h-12 bg-black/35 backdrop-blur-sm ring-1 ring-white/15")
+            ? "h-14 bg-black/95 backdrop-blur shadow-lg shadow-black/20"
+            : "h-12 bg-transparent")
         }
       >
         <Link href="/" className="font-semibold text-white text-lg sm:text-xl">Digitalwerk</Link>
