@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/shared/PageHero";
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
@@ -19,8 +20,9 @@ export default function Page() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {cases.map((c) => (
           <div key={c.slug} className="rounded-xl border overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/window.svg" alt={`${c.title} Vorschau`} className="h-32 w-full object-cover" />
+            <div className="relative h-32 w-full">
+              <Image src="/window.svg" alt={`${c.title} Vorschau`} fill className="object-cover" />
+            </div>
             <div className="p-6">
               <h3 className="text-lg font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm text-neutral-700">Problem: {c.problem}</p>

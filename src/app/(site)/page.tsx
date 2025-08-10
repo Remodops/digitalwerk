@@ -2,6 +2,7 @@ import { Hero } from "@/components/shared/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 
 export const dynamic = "force-static";
 
@@ -40,8 +41,9 @@ export default function Page() {
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {[{title:"Case 1",result:"+32% Leads durch neue Landingpage"},{title:"Case 2",result:"LCP < 2s dank Performance‑Optimierung"}].map((c, i) => (
             <div key={i} className="rounded-lg border overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/referenzen/case-placeholder.jpg" alt="Projektvorschau" className="h-32 w-full object-cover" />
+              <div className="relative h-32 w-full">
+                <Image src="/images/referenzen/background.jpg" alt="Projektvorschau" fill className="object-cover" />
+              </div>
               <div className="p-4">
                 <div className="font-semibold">{c.title}</div>
                 <div className="mt-2 text-sm text-neutral-700">Ergebnis: {c.result}</div>
@@ -58,11 +60,8 @@ export default function Page() {
             "/vercel.svg",
             "/globe.svg",
             "/window.svg",
-            "/images/logos/aws.svg",
-            "/images/logos/tailwind.svg",
           ].map((src) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={src} src={src} alt="Logo" className="h-8" />
+            <Image key={src} src={src} alt="Logo" width={32} height={32} className="h-8 w-auto" />
           ))}
         </div>
       </Section>
