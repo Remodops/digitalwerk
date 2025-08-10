@@ -15,11 +15,11 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" }) {
         <Link
           key={l.href}
           href={l.href}
-          className={
+          className={`${
             variant === "dark"
-              ? "text-sm text-white/90 hover:text-white"
-              : "text-sm text-neutral-700 hover:text-black"
-          }
+              ? "text-white/90 hover:text-white"
+              : "text-neutral-700 hover:text-black"
+          } text-sm transition-colors duration-200 hover:underline underline-offset-4`}
         >
           {l.label}
         </Link>
