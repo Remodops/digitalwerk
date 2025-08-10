@@ -76,6 +76,14 @@ function PlaceholderContactForm() {
         <Input id="ph-email" name="email" type="email" required disabled aria-required="true" />
       </div>
       <div>
+        <label htmlFor="ph-phone" className="block text-sm font-medium text-neutral-800">Telefon</label>
+        <Input id="ph-phone" name="phone" type="tel" disabled placeholder="+49 … (optional)" />
+      </div>
+      <div>
+        <label htmlFor="ph-subject" className="block text-sm font-medium text-neutral-800">Betreff</label>
+        <Input id="ph-subject" name="subject" disabled placeholder="Kurzer Betreff (optional)" />
+      </div>
+      <div>
         <label htmlFor="ph-message" className="block text-sm font-medium text-neutral-800">Nachricht*</label>
         <textarea
           id="ph-message"
@@ -86,6 +94,23 @@ function PlaceholderContactForm() {
           rows={5}
           className="block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20"
         />
+      </div>
+      <div className="flex items-start gap-3">
+        <input
+          id="ph-privacyConsent"
+          name="privacyConsent"
+          type="checkbox"
+          required
+          aria-required="true"
+          className="mt-1 h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-600"
+        />
+        <label htmlFor="ph-privacyConsent" className="text-sm text-neutral-800">
+          Ich stimme den{' '}
+          <Link href="/datenschutz" className="underline">
+            Datenschutzbestimmungen
+          </Link>{' '}
+          zu.
+        </label>
       </div>
       <div>
         <Button type="button" disabled>
