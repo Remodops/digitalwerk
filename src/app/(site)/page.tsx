@@ -68,8 +68,8 @@ export default function Page() {
       </Section>
       <Section title="Lassen Sie uns Ihr Projekt in die Realität umsetzen – jetzt unverbindlich anfragen.">
         <div className="flex flex-wrap items-center gap-3">
-          <Link className="underline" href="/kontakt">Projekt anfragen</Link>
-          <Link className="text-neutral-600 underline" href="/referenzen">Referenzen ansehen</Link>
+          <Link href="/kontakt" className="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800">Projekt anfragen</Link>
+          <Link href="/referenzen" className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-black hover:bg-neutral-50">Referenzen ansehen</Link>
         </div>
       </Section>
     </>
