@@ -8,11 +8,19 @@ const links = [
   { href: "/kontakt", label: "Kontakt" },
 ];
 
-export function Nav() {
+export function Nav({ variant = "light" }: { variant?: "light" | "dark" }) {
   return (
     <nav aria-label="Hauptnavigation" className="hidden md:flex items-center gap-6">
       {links.map((l) => (
-        <Link key={l.href} href={l.href} className="text-sm text-neutral-700 hover:text-black">
+        <Link
+          key={l.href}
+          href={l.href}
+          className={
+            variant === "dark"
+              ? "text-sm text-white/90 hover:text-white"
+              : "text-sm text-neutral-700 hover:text-black"
+          }
+        >
           {l.label}
         </Link>
       ))}
