@@ -1,40 +1,37 @@
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = withPageMeta({ title: "Über uns" });
 
 export default function Page() {
   return (
     <>
-      <Section title="Über uns" subtitle="Vision, Werte, Erfahrung.">
-        <div className="prose prose-neutral max-w-none">
-          <p>
-            Wir sind Digitalwerk IT – fokussiert auf schnelle, messbare Marketing‑Sites
-            mit starker UX und Performance. Unser Anspruch: Ergebnisse statt Overhead.
-          </p>
-        </div>
+      <Section title="Mission / Leitbild">
+        <p className="text-sm text-neutral-800 max-w-2xl">
+          Wir schaffen Websites, die Vertrauen aufbauen und Wachstum ermöglichen – ohne unnötigen Overhead.
+        </p>
       </Section>
-      <Section title="Unsere Werte">
+      <Section title="Was uns besonders macht (USP)">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 text-sm text-neutral-800">
-          <li className="rounded-lg border p-4">Klarheit in Kommunikation und Ergebnissen</li>
-          <li className="rounded-lg border p-4">Verantwortung für Qualität und Barrierefreiheit</li>
-          <li className="rounded-lg border p-4">Pragmatische, effiziente Arbeitsweise</li>
-          <li className="rounded-lg border p-4">Partnerschaftlich und verlässlich</li>
+          <li className="rounded-lg border p-4">Schnelle Umsetzung mit klaren Prozessen</li>
+          <li className="rounded-lg border p-4">Messbare Ergebnisse und sauberes Tracking</li>
+          <li className="rounded-lg border p-4">Barrierearme, performante Umsetzung</li>
+          <li className="rounded-lg border p-4">Partnerschaftliche, persönliche Betreuung</li>
         </ul>
       </Section>
-      <Section title="Erfahrung & Spezialisierung">
+      <Section title="Erfahrung & Kompetenzbereiche">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
           <div className="rounded-lg border p-4">Web‑Performance & SEO‑Grundlagen</div>
           <div className="rounded-lg border p-4">UX‑Module und skalierbare Komponenten</div>
           <div className="rounded-lg border p-4">Integrationen & Analytics‑Setup</div>
         </div>
       </Section>
-      <Section title="Wir arbeiten effizient, weil wir…">
-        <ul className="list-disc pl-5 text-sm text-neutral-800">
-          <li>klare Prozesse und Checklisten nutzen,</li>
-          <li>Templates gezielt einsetzen statt neu zu erfinden,</li>
-          <li>und Entscheidungen mit Daten untermauern.</li>
-        </ul>
+      <Section>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link className="underline" href="/leistungen">Leistungen ansehen</Link>
+          <Link className="text-neutral-600 underline" href="/kontakt">Projekt anfragen</Link>
+        </div>
       </Section>
     </>
   );

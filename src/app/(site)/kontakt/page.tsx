@@ -29,7 +29,7 @@ export default function Page() {
         <div>
           <Card>
             <h3 className="text-lg font-semibold text-neutral-900">Alternativ per Messenger</h3>
-            <p className="mt-1 text-neutral-600">Scanne den QR‑Code oder nutze die Links.</p>
+            <p className="mt-1 text-neutral-600">So erreichst du uns am schnellsten: Messenger oder Formular.</p>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="flex flex-col items-center text-center">
                 <QrPlaceholder label="Telegram" />

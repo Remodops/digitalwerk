@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = withPageMeta({ title: "Leistungen" });
 
@@ -11,6 +12,12 @@ export default function Page() {
   ];
   return (
     <>
+      <Section title="Für wen ist das geeignet?" subtitle="Unternehmen, die schnell sichtbare Ergebnisse wollen.">
+        <p className="text-sm text-neutral-800 max-w-2xl">
+          Ideal für Teams, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
+          mit Fokus auf Speed, Klarheit und messbare Resultate.
+        </p>
+      </Section>
       <Section title="Leistungen" subtitle="Drei klare Pakete – flexibel erweiterbar.">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {packages.map((p) => (
@@ -26,9 +33,9 @@ export default function Page() {
           ))}
         </div>
       </Section>
-      <Section title="So arbeiten wir" subtitle="Transparent, fokussiert, in klaren Schritten.">
+      <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch">
         <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3 list-decimal pl-6">
-          {["Kickoff & Ziele","Recherche & Scope","Informationsarchitektur","Design & Prototyp","Implementierung","Launch & Übergabe"].map((s, i) => (
+          {["Kickoff","Umsetzung","Launch"].map((s, i) => (
             <li key={i} className="rounded-xl border p-4">
               <div className="font-semibold">{s}</div>
               <p className="mt-2 text-sm text-neutral-700">Kurzbeschreibung des Schritts.</p>
@@ -43,6 +50,9 @@ export default function Page() {
           <li className="rounded-lg border p-4">Barrierearme Umsetzung und Performance im Fokus</li>
           <li className="rounded-lg border p-4">Partnerschaftliche Zusammenarbeit auf Augenhöhe</li>
         </ul>
+      </Section>
+      <Section>
+        <Link href="/kontakt" className="inline-block text-sm font-medium underline">Projekt starten</Link>
       </Section>
     </>
   );

@@ -15,12 +15,18 @@ export default function Page() {
     <Section title="Referenzen" subtitle="Problem → Lösung → Ergebnis.">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {cases.map((c) => (
-          <Link key={c.slug} href={`/referenzen/${c.slug}`} className="rounded-xl border p-6 hover:bg-neutral-50">
-            <h3 className="text-lg font-semibold">{c.title}</h3>
-            <p className="mt-2 text-sm text-neutral-700">Problem: {c.problem}</p>
-            <p className="text-sm text-neutral-700">Lösung: {c.solution}</p>
-            <p className="text-sm text-neutral-700">Ergebnis: {c.result}</p>
-          </Link>
+          <div key={c.slug} className="rounded-xl border overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/window.svg" alt={`${c.title} Vorschau`} className="h-32 w-full object-cover" />
+            <div className="p-6">
+              <h3 className="text-lg font-semibold">{c.title}</h3>
+              <p className="mt-2 text-sm text-neutral-700">Problem: {c.problem}</p>
+              <p className="text-sm text-neutral-700">Lösung: {c.solution}</p>
+              <p className="text-sm text-neutral-700">Ergebnis: {c.result}</p>
+              <blockquote className="mt-3 border-l-2 pl-3 text-sm text-neutral-700">„Kurzes Kunden‑Zitat als Testimonial.“</blockquote>
+              <Link href={`/referenzen/${c.slug}`} className="mt-4 inline-block text-sm font-medium underline">Zum Case</Link>
+            </div>
+          </div>
         ))}
       </div>
     </Section>
