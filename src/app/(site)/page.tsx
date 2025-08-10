@@ -11,14 +11,23 @@ export default function Page() {
       <Hero />
       <Section title="Warum Digitalwerk?" subtitle="Die 3 Säulen unseres Angebots.">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
-          <li className="rounded-lg border p-4">Schnell & effizient</li>
-          <li className="rounded-lg border p-4">Messbare Ergebnisse</li>
-          <li className="rounded-lg border p-4">Persönliche Betreuung</li>
+          <li className="rounded-lg border p-4">
+            <div className="font-medium">Schnell & effizient</div>
+            <p className="mt-1 text-neutral-700">Fertigstellung in 1–2 Wochen – ohne unnötigen Overhead.</p>
+          </li>
+          <li className="rounded-lg border p-4">
+            <div className="font-medium">Messbare Ergebnisse</div>
+            <p className="mt-1 text-neutral-700">Von Ladezeit‑Optimierung bis SEO – alles trackbar.</p>
+          </li>
+          <li className="rounded-lg border p-4">
+            <div className="font-medium">Persönliche Betreuung</div>
+            <p className="mt-1 text-neutral-700">Direkter Ansprechpartner, kein Ticket‑Wirrwarr.</p>
+          </li>
         </ul>
       </Section>
       <Section title="Leistungsteaser" subtitle="Kurzüberblick – Details auf der Leistungsseite.">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {[{name:"Launch",desc:"Schneller Start für kleine Umfänge"},{name:"Business",desc:"Solide Basis mit Wachstumsspielraum"},{name:"Pro",desc:"Komplexe Anforderungen, flexibel"}].map((p) => (
+          {[{name:"Launch",desc:"Ideal für den schnellen Start kleiner Projekte."},{name:"Business",desc:"Mehr Seiten, mehr Möglichkeiten, Wachstum inklusive."},{name:"Pro",desc:"Für komplexe Anforderungen und maximale Flexibilität."}].map((p) => (
             <div key={p.name} className="rounded-xl border p-6">
               <h3 className="text-lg font-semibold">{p.name}</h3>
               <p className="mt-2 text-sm text-neutral-700">{p.desc}</p>
@@ -29,10 +38,10 @@ export default function Page() {
       </Section>
       <Section title="Referenzen‑Highlight" subtitle="Einblick in Ergebnisse.">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {[{title:"Case 1",result:"+32% Leads"},{title:"Case 2",result:"LCP < 2s"}].map((c, i) => (
+          {[{title:"Case 1",result:"+32% Leads durch neue Landingpage"},{title:"Case 2",result:"LCP < 2s dank Performance‑Optimierung"}].map((c, i) => (
             <div key={i} className="rounded-lg border overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/window.svg" alt="Projektvorschau" className="h-32 w-full object-cover" />
+              <img src="/images/referenzen/case-placeholder.jpg" alt="Projektvorschau" className="h-32 w-full object-cover" />
               <div className="p-4">
                 <div className="font-semibold">{c.title}</div>
                 <div className="mt-2 text-sm text-neutral-700">Ergebnis: {c.result}</div>
@@ -42,20 +51,22 @@ export default function Page() {
           ))}
         </Container>
       </Section>
-      <Section title="Vertrauen" subtitle="Ausgewählte Partner & Nachweise.">
+      <Section title="Vertrauen" subtitle="Ausgewählte Technologien & Nachweise.">
         <div className="flex flex-wrap items-center gap-6 opacity-80">
           {[
             "/next.svg",
             "/vercel.svg",
             "/globe.svg",
             "/window.svg",
+            "/images/logos/aws.svg",
+            "/images/logos/tailwind.svg",
           ].map((src) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img key={src} src={src} alt="Logo" className="h-8" />
           ))}
         </div>
       </Section>
-      <Section title="Lassen Sie uns über Ihr Projekt sprechen">
+      <Section title="Lassen Sie uns Ihr Projekt in die Realität umsetzen – jetzt unverbindlich anfragen.">
         <div className="flex flex-wrap items-center gap-3">
           <Link className="underline" href="/kontakt">Projekt anfragen</Link>
           <Link className="text-neutral-600 underline" href="/referenzen">Referenzen ansehen</Link>
