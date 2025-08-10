@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
+import { PageHero } from "@/components/shared/PageHero";
 import Link from "next/link";
 
 export const metadata = withPageMeta({ title: "Leistungen" });
@@ -12,13 +13,14 @@ export default function Page() {
   ];
   return (
     <>
+      <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/home/code-2.jpg" />
       <Section title="Für wen ist das geeignet?" subtitle="Unternehmen, die schnell sichtbare Ergebnisse wollen.">
         <p className="text-sm text-neutral-800 max-w-2xl">
           Ideal für Teams, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
           mit Fokus auf Speed, Klarheit und messbare Resultate.
         </p>
       </Section>
-      <Section title="Leistungen" subtitle="Drei klare Pakete – flexibel erweiterbar.">
+      <Section title="Pakete" subtitle="Drei klare Pakete – flexibel erweiterbar.">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {packages.map((p) => (
             <div key={p.name} className="rounded-xl border p-6">

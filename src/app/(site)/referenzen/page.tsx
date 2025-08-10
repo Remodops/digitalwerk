@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageHero } from "@/components/shared/PageHero";
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
 
@@ -12,7 +13,9 @@ const cases = [
 
 export default function Page() {
   return (
-    <Section title="Referenzen" subtitle="Problem → Lösung → Ergebnis.">
+    <>
+    <PageHero title="Referenzen" subtitle="Problem → Lösung → Ergebnis – echte Resultate." bgImageSrc="/images/referenzen/case-placeholder.jpg" />
+    <Section title="Cases" subtitle="Ausgewählte Projekte im Überblick.">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {cases.map((c) => (
           <div key={c.slug} className="rounded-xl border overflow-hidden">
@@ -30,6 +33,7 @@ export default function Page() {
         ))}
       </div>
     </Section>
+    </>
   );
 }
 

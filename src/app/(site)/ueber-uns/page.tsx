@@ -1,12 +1,14 @@
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
 import Link from "next/link";
+import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata = withPageMeta({ title: "Über uns" });
 
 export default function Page() {
   return (
     <>
+      <PageHero title="Über uns" subtitle="Mission, Werte und Kompetenz – klar und greifbar." bgImageSrc="/images/home/code-2.jpg" />
       <Section title="Mission / Leitbild">
         <p className="text-sm text-neutral-800 max-w-2xl">
           Wir schaffen Websites, die Vertrauen aufbauen und Wachstum ermöglichen – ohne unnötigen Overhead.
