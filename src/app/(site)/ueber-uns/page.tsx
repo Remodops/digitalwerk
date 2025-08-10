@@ -8,7 +8,7 @@ export const metadata = withPageMeta({ title: "Über uns" });
 export default function Page() {
   return (
     <>
-      <PageHero title="Über uns" subtitle="Mission, Werte und Kompetenz – klar und greifbar." bgImageSrc="/images/home/code-2.jpg" />
+      <PageHero title="Über uns" subtitle="Mission, Werte und Kompetenz – klar und greifbar." bgImageSrc="/images/ueber-uns/background.png" />
       <Section title="Mission / Leitbild">
         <p className="text-sm text-neutral-800 max-w-2xl">
           Wir schaffen Websites, die Vertrauen aufbauen und Wachstum ermöglichen – ohne unnötigen Overhead.
