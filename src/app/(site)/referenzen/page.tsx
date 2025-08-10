@@ -14,7 +14,7 @@ const cases = [
 export default function Page() {
   return (
     <>
-    <PageHero title="Referenzen" subtitle="Problem → Lösung → Ergebnis – echte Resultate." bgImageSrc="/images/referenzen/case-placeholder.jpg" />
+    <PageHero title="Referenzen" subtitle="Problem → Lösung → Ergebnis – echte Resultate." bgImageSrc="/images/referenzen/background.jpg" />
     <Section title="Cases" subtitle="Ausgewählte Projekte im Überblick.">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {cases.map((c) => (
