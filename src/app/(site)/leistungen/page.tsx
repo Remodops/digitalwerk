@@ -13,7 +13,7 @@ export default function Page() {
   ];
   return (
     <>
-      <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/home/code-2.jpg" />
+      <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" />
       <Section title="Für wen ist das geeignet?" subtitle="Unternehmen, die schnell sichtbare Ergebnisse wollen.">
         <p className="text-sm text-neutral-800 max-w-2xl">
           Ideal für Teams, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
