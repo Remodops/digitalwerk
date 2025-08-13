@@ -50,7 +50,7 @@ export function CasesGrid({ items }: CasesGridProps) {
             <div className="p-6">
               <h3 className="text-lg font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm text-neutral-700">{c.description}</p>
-              <Link href={`/referenzen/${c.slug}`} className="mt-4 inline-block text-sm font-medium underline">Zum Case</Link>
+              <Link href={`/referenzen/${c.slug}`} className="mt-4 inline-block text-sm font-medium underline">Zur Website</Link>
             </div>
           </div>
         ))}

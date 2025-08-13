@@ -8,21 +8,21 @@ export const metadata = withPageMeta({ title: "Referenzen" });
 const cases = [
   {
     slug: "case-1",
-    title: "Case 1",
+    title: "admin4me",
     imageSrc: "/images/referenzen/admin4me.PNG",
-    description: "Kurze Beschreibung folgt.",
+    description: "IT-Administrator- und Support",
   },
   {
     slug: "case-2",
-    title: "Case 2",
+    title: "Hundepension Christiane Herkt",
     imageSrc: "/images/referenzen/website_4pfoetchen.jpg",
-    description: "Kurze Beschreibung folgt.",
+    description: "Hundepension",
   },
   {
     slug: "case-3",
-    title: "Case 3",
+    title: "Lindigkeit | Mertens",
     imageSrc: "/images/referenzen/website_lindigkeit-mertens.jpg",
-    description: "Kurze Beschreibung folgt.",
+    description: "Rechtsanwalt, Kanzlei und Notariat",
   },
 ];
 
