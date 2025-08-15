@@ -13,22 +13,22 @@ export default function Page() {
       <Section title="Warum Digitalwerk?" subtitle="Die 3 Säulen unseres Angebots.">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Schnell & effizient</div>
-            <p className="mt-1 text-neutral-700">Fertigstellung in 1–2 Wochen – ohne unnötigen Overhead.</p>
+            <div className="font-medium">Schnell & Effizient</div>
+            <p className="mt-1 text-neutral-700">Fertigstellung in 3–7 Tagen – ohne unnötigen Ballast.</p>
           </li>
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Messbare Ergebnisse</div>
-            <p className="mt-1 text-neutral-700">Von Ladezeit‑Optimierung bis SEO – alles trackbar.</p>
+            <div className="font-medium">Messbar</div>
+            <p className="mt-1 text-neutral-700">Von Ladezeit bis Conversion – transparent nachweisbar.</p>
           </li>
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Persönliche Betreuung</div>
-            <p className="mt-1 text-neutral-700">Direkter Ansprechpartner, kein Ticket‑Wirrwarr.</p>
+            <div className="font-medium">Direkt</div>
+            <p className="mt-1 text-neutral-700">Dein Projekt, ein Ansprechpartner, null Bürokratie.</p>
           </li>
         </ul>
       </Section>
       <Section title="Leistungsteaser" subtitle="Kurzüberblick – Details auf der Leistungsseite.">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {[{name:"Launch",desc:"Ideal für den schnellen Start kleiner Projekte."},{name:"Business",desc:"Mehr Seiten, mehr Möglichkeiten, Wachstum inklusive."},{name:"Pro",desc:"Für komplexe Anforderungen und maximale Flexibilität."}].map((p) => (
+          {[{name:"Kickstart",desc:"Für kleine, fokussierte Projekte."},{name:"Wachstum",desc:"Mehr Seiten, mehr Funktionen, mehr Leads."},{name:"Individuell",desc:"Maßgeschneiderte Lösungen für komplexe Anforderungen."}].map((p) => (
             <div key={p.name} className="rounded-xl border p-6">
               <h3 className="text-lg font-semibold">{p.name}</h3>
               <p className="mt-2 text-sm text-neutral-700">{p.desc}</p>
@@ -39,7 +39,7 @@ export default function Page() {
       </Section>
       <Section title="Referenzen‑Highlight" subtitle="Einblick in Ergebnisse.">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {[{title:"Case 1",result:"+32% Leads durch neue Landingpage"},{title:"Case 2",result:"LCP < 2s dank Performance‑Optimierung"}].map((c, i) => (
+          {[{title:"Case 1",result:"+32 % Leads in 6 Wochen"},{title:"Case 2",result:"LCP < 2 s – 45 % bessere Core Web Vitals"}].map((c, i) => (
             <div key={i} className="rounded-lg border overflow-hidden">
               <div className="relative h-32 w-full">
                 <Image src="/images/referenzen/background.jpg" alt="Projektvorschau" fill className="object-cover" />
@@ -53,19 +53,22 @@ export default function Page() {
           ))}
         </Container>
       </Section>
-      <Section title="Vertrauen" subtitle="Ausgewählte Technologien & Nachweise.">
+      <Section title="Vertrauen" subtitle="Technologien, die halten, was sie versprechen.">
         <div className="flex flex-wrap items-center gap-6 opacity-80">
           {[
             "/next.svg",
             "/vercel.svg",
-            "/globe.svg",
-            "/window.svg",
+            "/aws.svg",
+            "/cloudflare.svg",
+            "/tailwind.svg",
+            "/hugo.svg",
+            "/gdpr.svg",
           ].map((src) => (
             <Image key={src} src={src} alt="Logo" width={32} height={32} className="h-8 w-auto" />
           ))}
         </div>
       </Section>
-      <Section title="Lassen Sie uns Ihr Projekt in die Realität umsetzen – jetzt unverbindlich anfragen.">
+      <Section title="Lass uns deine Website in 7 Tagen live bringen." subtitle="20 Minuten Call – Ziel, Umfang, Festpreis.">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/kontakt" className="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800">Projekt anfragen</Link>
           <Link href="/referenzen" className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-black hover:bg-neutral-50">Referenzen ansehen</Link>
