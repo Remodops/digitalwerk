@@ -31,8 +31,8 @@ export default function Page() {
       </Section>
       <Section>
         <div className="flex flex-wrap items-center gap-3">
-          <Link className="underline" href="/leistungen">Leistungen ansehen</Link>
-          <Link className="text-neutral-600 underline" href="/kontakt">Projekt anfragen</Link>
+          <Link className="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800" href="/leistungen">Leistungen ansehen</Link>
+          <Link className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-black hover:bg-neutral-50" href="/kontakt">Projekt anfragen</Link>
         </div>
       </Section>
     </>

@@ -15,7 +15,7 @@ export default function Page() {
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
           <li className="rounded-lg border p-4">
             <div className="font-medium">Schnell & Effizient</div>
-            <p className="mt-1 text-neutral-700">Fertigstellung in 3–7 Tagen – ohne unnötigen Ballast.</p>
+            <p className="mt-1 text-neutral-700">Fertigstellung in 2–3 Wochen – ohne unnötigen Ballast.</p>
           </li>
           <li className="rounded-lg border p-4">
             <div className="font-medium">Messbar</div>
@@ -42,20 +42,20 @@ export default function Page() {
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {cases.slice(-2).reverse().map((c) => (
             <div key={c.slug} className="rounded-lg border overflow-hidden">
-              <div className="relative h-32 w-full">
+              <Link href={`/referenzen/${c.slug}`} className="relative block h-32 w-full">
                 <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover" />
-              </div>
+              </Link>
               <div className="p-4">
                 <div className="font-semibold">{c.title}</div>
                 <div className="mt-2 text-sm text-neutral-700">{c.description}</div>
-                <Link href={`/referenzen/${c.slug}`} className="mt-3 inline-block text-sm underline">Zur Referenz</Link>
+                <Link href="/referenzen" className="mt-3 inline-block text-sm underline">Mehr ansehen</Link>
               </div>
             </div>
           ))}
         </Container>
       </Section>
       {/* Vertrauen-Sektion entfernt */}
-      <Section title="Lass uns deine Website in 7 Tagen live bringen." subtitle="20 Minuten Call – Ziel, Umfang, Festpreis.">
+      <Section title="Lass uns deine Website live bringen." subtitle="20 Minuten Call – Ziel, Umfang, Festpreis.">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/kontakt" className="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800">Projekt anfragen</Link>
           <Link href="/referenzen" className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-black hover:bg-neutral-50">Referenzen ansehen</Link>
