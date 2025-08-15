@@ -2,8 +2,8 @@ import { Hero } from "@/components/shared/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
-import Image from "next/image";
 import { cases } from "@/data/cases";
+import { HighlightCases } from "@/components/home/HighlightCases";
 
 export const dynamic = "force-static";
 
@@ -39,19 +39,8 @@ export default function Page() {
         </Container>
       </Section>
       <Section title="Referenzen‑Highlight" subtitle="Einblick in Ergebnisse.">
-        <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {cases.slice(-2).reverse().map((c) => (
-            <div key={c.slug} className="rounded-lg border overflow-hidden">
-              <Link href={`/referenzen/${c.slug}`} className="relative block h-32 w-full">
-                <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover" />
-              </Link>
-              <div className="p-4">
-                <div className="font-semibold">{c.title}</div>
-                <div className="mt-2 text-sm text-neutral-700">{c.description}</div>
-                <Link href="/referenzen" className="mt-3 inline-block text-sm underline">Mehr ansehen</Link>
-              </div>
-            </div>
-          ))}
+        <Container>
+          <HighlightCases items={cases.slice(-2).reverse()} />
         </Container>
       </Section>
       {/* Vertrauen-Sektion entfernt */}
