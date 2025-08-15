@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
 import Image from "next/image";
+import { cases } from "@/data/cases";
 
 export const dynamic = "force-static";
 
@@ -39,35 +40,21 @@ export default function Page() {
       </Section>
       <Section title="Referenzen‑Highlight" subtitle="Einblick in Ergebnisse.">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {[{title:"Case 1",result:"+32 % Leads in 6 Wochen"},{title:"Case 2",result:"LCP < 2 s – 45 % bessere Core Web Vitals"}].map((c, i) => (
-            <div key={i} className="rounded-lg border overflow-hidden">
+          {cases.slice(-2).reverse().map((c) => (
+            <div key={c.slug} className="rounded-lg border overflow-hidden">
               <div className="relative h-32 w-full">
-                <Image src="/images/referenzen/background.jpg" alt="Projektvorschau" fill className="object-cover" />
+                <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover" />
               </div>
               <div className="p-4">
                 <div className="font-semibold">{c.title}</div>
-                <div className="mt-2 text-sm text-neutral-700">Ergebnis: {c.result}</div>
-                <Link href="/referenzen" className="mt-3 inline-block text-sm underline">Alle Referenzen ansehen</Link>
+                <div className="mt-2 text-sm text-neutral-700">{c.description}</div>
+                <Link href={`/referenzen/${c.slug}`} className="mt-3 inline-block text-sm underline">Zur Referenz</Link>
               </div>
             </div>
           ))}
         </Container>
       </Section>
-      <Section title="Vertrauen" subtitle="Technologien, die halten, was sie versprechen.">
-        <div className="flex flex-wrap items-center gap-6 opacity-80">
-          {[
-            "/next.svg",
-            "/vercel.svg",
-            "/aws.svg",
-            "/cloudflare.svg",
-            "/tailwind.svg",
-            "/hugo.svg",
-            "/gdpr.svg",
-          ].map((src) => (
-            <Image key={src} src={src} alt="Logo" width={32} height={32} className="h-8 w-auto" />
-          ))}
-        </div>
-      </Section>
+      {/* Vertrauen-Sektion entfernt */}
       <Section title="Lass uns deine Website in 7 Tagen live bringen." subtitle="20 Minuten Call – Ziel, Umfang, Festpreis.">
         <div className="flex flex-wrap items-center gap-3">
           <Link href="/kontakt" className="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800">Projekt anfragen</Link>

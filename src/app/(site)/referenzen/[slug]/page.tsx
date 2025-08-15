@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
+import { caseSlugs } from "@/data/cases";
 
 type Params = { slug: string };
 
-const CASES = new Set(["case-1", "case-2", "case-3"]);
+const CASES = new Set(caseSlugs);
 
 export async function generateStaticParams() {
   return Array.from(CASES).map((slug) => ({ slug }));
