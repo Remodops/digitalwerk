@@ -52,10 +52,7 @@ export default function Page() {
     <>
       <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" />
       <Section title="Für wen ist das geeignet?" subtitle="Für Unternehmer, Selbstständige und kleine Teams, die ohne lange Abstimmungswege eine moderne Website möchten – schnell, klar und messbar.">
-        <p className="text-sm text-neutral-800 max-w-2xl">
-          Ideal für Kunden, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
-          mit Fokus auf Speed, Klarheit und messbare Resultate.
-        </p>
+       
       </Section>
       <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
