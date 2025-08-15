@@ -6,6 +6,7 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   bgImageSrc?: string;
+  bgImageAlt?: string;
   gradientFrom?: string; // tailwind color class, e.g. 'from-sky-700'
   gradientTo?: string;   // e.g. 'to-sky-900'
   overlayOpacity?: string; // e.g. 'bg-black/40'
@@ -15,6 +16,7 @@ export function PageHero({
   title,
   subtitle,
   bgImageSrc,
+  bgImageAlt = "Seitenhintergrund",
   gradientFrom = "from-neutral-800",
   gradientTo = "to-black",
   overlayOpacity = "bg-black/40",
@@ -25,7 +27,7 @@ export function PageHero({
       {bgImageSrc && (
         <Image
           src={bgImageSrc}
-          alt=""
+          alt={bgImageAlt}
           fill
           priority
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"

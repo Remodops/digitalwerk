@@ -38,7 +38,7 @@ export function HighlightCases({ items }: { items: HighlightCaseItem[] }) {
               onClick={() => setLightboxIndex(i)}
               aria-label={`${c.title} vergrößert anzeigen`}
             >
-              <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover" />
+              <Image src={c.imageSrc} alt={`${c.title} – Projektvorschau`} fill className="object-cover" />
             </button>
             <div className="p-4">
               <div className="font-semibold">{c.title}</div>
@@ -61,7 +61,7 @@ export function HighlightCases({ items }: { items: HighlightCaseItem[] }) {
             <div className="relative mx-auto w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[3/2] lg:aspect-[2/1] bg-black/20 rounded-lg overflow-hidden">
               <Image
                 src={items[lightboxIndex].imageSrc}
-                alt={`${items[lightboxIndex].title} groß`}
+                alt={`${items[lightboxIndex].title} – Bild in groß`}
                 fill
                 className="object-contain"
                 priority

@@ -12,7 +12,7 @@ export const metadata = withPageMeta({
 export default function Page() {
   return (
     <>
-    <PageHero title="Referenzen" subtitle="Problem → Lösung → Ergebnis – echte Resultate." bgImageSrc="/images/referenzen/background.jpg" />
+    <PageHero title="Referenzen" subtitle="Problem → Lösung → Ergebnis – echte Resultate." bgImageSrc="/images/referenzen/background.jpg" bgImageAlt="Abstrakter Hintergrund für die Referenzen-Übersicht" />
     <Section title="Cases" subtitle="Ausgewählte Projekte im Überblick.">
       <CasesGrid items={cases} />
     </Section>

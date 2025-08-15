@@ -50,7 +50,7 @@ export default function Page() {
   ];
   return (
     <>
-      <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" />
+      <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" bgImageAlt="Laptop mit Code auf dem Bildschirm" />
       <Section title="Für wen ist das geeignet?" subtitle="Für Unternehmer, Selbstständige und kleine Teams, die ohne lange Abstimmungswege eine moderne Website möchten – schnell, klar und messbar.">
         <></>
       </Section>

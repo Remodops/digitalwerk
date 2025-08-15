@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
     // Bei statischem Export Image-Optimierung deaktivieren
     unoptimized: isStaticExport,
+    formats: ["image/avif", "image/webp"],
   },
 
   // Bessere Fehlersuche in Prod

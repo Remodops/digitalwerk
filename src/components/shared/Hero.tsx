@@ -8,7 +8,7 @@ export function Hero() {
       {/* Hintergrundbild */}
       <Image
         src="/images/home/code-2.jpg"
-        alt="Code-Hintergrund"
+        alt="Code im Hintergrund auf einem Bildschirm"
         fill
         priority
         className="absolute inset-0 -z-10 h-full w-full object-cover"
