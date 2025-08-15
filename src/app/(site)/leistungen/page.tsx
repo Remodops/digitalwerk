@@ -1,4 +1,5 @@
 import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
 import { withPageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/shared/PageHero";
 import Link from "next/link";
@@ -6,6 +7,42 @@ import Link from "next/link";
 export const metadata = withPageMeta({ title: "Leistungen" });
 
 export default function Page() {
+  const services = [
+    {
+      title: "Webdesign & Entwicklung",
+      points: [
+        "Moderne, benutzerfreundliche Websites",
+        "Mobile-optimiertes Responsive Design",
+        "Schnelle Ladezeiten & SEO‑Basisoptimierung",
+        "Integration von Kontaktformularen, Buchungssystemen oder Shops",
+      ],
+    },
+    {
+      title: "Cloud- & Hosting‑Lösungen",
+      points: [
+        "Einrichtung und Konfiguration von Webhosting",
+        "Domainregistrierung & E‑Mail‑Einrichtung",
+        "Migration bestehender Websites auf neue Server",
+        "Cloud‑Setup (z. B. AWS) für Webprojekte",
+      ],
+    },
+    {
+      title: "Automatisierung & KI‑Integration",
+      points: [
+        "Chatbots & KI‑Assistenten in Websites integrieren",
+        "Automatisierte Workflows für Geschäftsprozesse",
+        "Datenanbindungen & Schnittstellen (APIs)",
+      ],
+    },
+    {
+      title: "Optimierung & Relaunch bestehender Websites",
+      points: [
+        "Design‑Updates und technische Modernisierung",
+        "Performance‑Optimierung",
+        "Verbesserung der Nutzerführung (UX)",
+      ],
+    },
+  ];
   const packages = [
     { name: "Launch", price: "ab 1.400 €", features: ["1 Seite", "Basis‑SEO", "Launch in 1–2 Wochen"] },
     { name: "Business", price: "ab 2.500 €", features: ["bis 5 Seiten", "SEO & Tracking vorbereitet", "CMS optional"] },
@@ -19,6 +56,23 @@ export default function Page() {
           Ideal für Teams, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
           mit Fokus auf Speed, Klarheit und messbare Resultate.
         </p>
+      </Section>
+      <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {services.map((s) => (
+            <Card key={s.title} className="h-full">
+              <h3 className="text-lg font-semibold text-neutral-900">{s.title}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-neutral-700">
+                {s.points.map((p) => (
+                  <li key={p} className="flex gap-2">
+                    <span className="text-neutral-400">•</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))}
+        </div>
       </Section>
       <Section title="Pakete" subtitle="Drei klare Pakete – flexibel erweiterbar.">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
