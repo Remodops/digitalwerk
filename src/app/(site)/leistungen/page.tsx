@@ -11,7 +11,7 @@ export default function Page() {
     {
       title: "Webdesign & Entwicklung",
       points: [
-        "Moderne, benutzerfreundliche Websites",
+        "Moderne, benutzerfreundliche & maßgeschneiderte Websites",
         "Mobile-optimiertes Responsive Design",
         "Schnelle Ladezeiten & SEO‑Basisoptimierung",
         "Integration von Kontaktformularen, Buchungssystemen oder Shops",
@@ -20,24 +20,24 @@ export default function Page() {
     {
       title: "Cloud- & Hosting‑Lösungen",
       points: [
-        "Einrichtung und Konfiguration von Webhosting",
+        "Einrichtung und Konfiguration von Webhosting (keine laufende Administration)",
         "Domainregistrierung & E‑Mail‑Einrichtung",
         "Migration bestehender Websites auf neue Server",
-        "Cloud‑Setup (z. B. AWS) für Webprojekte",
+        "Cloud‑Setup (z. B. AWS) für Webprojekte inkl. Übergabe",
       ],
     },
     {
       title: "Automatisierung & KI‑Integration",
       points: [
+        "Wiederkehrende Aufgaben automatisieren – mehr Zeit fürs Kerngeschäft",
         "Chatbots & KI‑Assistenten in Websites integrieren",
-        "Automatisierte Workflows für Geschäftsprozesse",
         "Datenanbindungen & Schnittstellen (APIs)",
       ],
     },
     {
       title: "Optimierung & Relaunch bestehender Websites",
       points: [
-        "Design‑Updates und technische Modernisierung",
+        "Design‑Updates sowie technische & visuelle Modernisierung",
         "Performance‑Optimierung",
         "Verbesserung der Nutzerführung (UX)",
       ],
@@ -46,14 +46,14 @@ export default function Page() {
   const packages = [
     { name: "Launch", price: "ab 1.400 €", features: ["1 Seite", "Basis‑SEO", "Launch in 1–2 Wochen"] },
     { name: "Business", price: "ab 2.500 €", features: ["bis 5 Seiten", "SEO & Tracking vorbereitet", "CMS optional"] },
-    { name: "Pro", price: "ab 4.000 €", features: ["> 5 Seiten", "Module & Integrationen", "Content‑Support"] },
+    { name: "Pro", price: "ab 4.000 €", features: ["> 5 Seiten", "Module & Integrationen", "Content‑Integration"] },
   ];
   return (
     <>
       <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" />
-      <Section title="Für wen ist das geeignet?" subtitle="Unternehmen, die schnell sichtbare Ergebnisse wollen.">
+      <Section title="Für wen ist das geeignet?" subtitle="Für Unternehmer, Selbstständige und kleine Teams, die ohne lange Abstimmungswege eine moderne Website möchten – schnell, klar und messbar.">
         <p className="text-sm text-neutral-800 max-w-2xl">
-          Ideal für Teams, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
+          Ideal für Kunden, die ohne Agentur‑Overhead eine moderne Website aufbauen oder erneuern möchten –
           mit Fokus auf Speed, Klarheit und messbare Resultate.
         </p>
       </Section>
@@ -91,20 +91,27 @@ export default function Page() {
       </Section>
       <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch">
         <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3 list-decimal pl-6">
-          {["Kickoff","Umsetzung","Launch"].map((s, i) => (
-            <li key={i} className="rounded-xl border p-4">
-              <div className="font-semibold">{s}</div>
-              <p className="mt-2 text-sm text-neutral-700">Kurzbeschreibung des Schritts.</p>
-            </li>
-          ))}
+          {["Kickoff","Umsetzung","Launch"].map((s, i) => {
+            const desc = {
+              Kickoff: "Ziele festlegen, Inhalte und Designideen besprechen.",
+              Umsetzung: "Design & Technik entwickeln, Inhalte einpflegen, testen.",
+              Launch: "Website live schalten, Übergabe & kurze Einführung.",
+            } as const;
+            return (
+              <li key={i} className="rounded-xl border p-4">
+                <div className="font-semibold">{s}</div>
+                <p className="mt-2 text-sm text-neutral-700">{desc[s as keyof typeof desc]}</p>
+              </li>
+            );
+          })}
         </ol>
       </Section>
       <Section title="Warum Digitalwerk IT?" subtitle="Werte, die man spürt.">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 text-sm text-neutral-800">
-          <li className="rounded-lg border p-4">Schnelligkeit ohne Qualitätsverlust</li>
-          <li className="rounded-lg border p-4">Messbare Ergebnisse und klares Reporting</li>
-          <li className="rounded-lg border p-4">Barrierearme Umsetzung und Performance im Fokus</li>
-          <li className="rounded-lg border p-4">Partnerschaftliche Zusammenarbeit auf Augenhöhe</li>
+          <li className="rounded-lg border p-4">Schnelle Umsetzung, ohne Kompromisse bei Qualität</li>
+          <li className="rounded-lg border p-4">Messbare Ergebnisse & transparente Kommunikation</li>
+          <li className="rounded-lg border p-4">Barrierearm, performant und zukunftssicher</li>
+          <li className="rounded-lg border p-4">Direkte Zusammenarbeit – ohne Agentur-Overhead</li>
         </ul>
       </Section>
       <Section>
