@@ -17,25 +17,31 @@ export function ConsentBanner({ onAccept }: { onAccept: () => void }) {
   if (!ENABLE_CONSENT || !open) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-4 backdrop-blur">
-      <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center gap-3 justify-between">
-        <p className="text-sm text-neutral-800">Wir verwenden optionale Cookies für anonymes Analytics – nur nach Ihrer Zustimmung.</p>
-        <div className="flex gap-2">
-          <button
-            className="rounded-md border px-3 py-2 text-sm"
-            onClick={() => {
-              localStorage.setItem(STORAGE_KEY, 'denied');
-              setOpen(false);
-            }}
-          >Ablehnen</button>
-          <button
-            className="rounded-md bg-black px-3 py-2 text-sm text-white"
-            onClick={() => {
-              localStorage.setItem(STORAGE_KEY, 'granted');
-              setOpen(false);
-              onAccept();
-            }}
-          >Zustimmen</button>
+    <div className="fixed inset-x-0 bottom-4 z-50">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="rounded-2xl border border-neutral-200 bg-white/95 p-4 shadow-xl backdrop-blur">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between">
+            <p className="text-sm text-neutral-800">
+              Wir nutzen optionale Cookies für anonymes Analytics, um die Website zu verbessern. Sie können Ihre Entscheidung jederzeit widerrufen.
+            </p>
+            <div className="flex gap-2">
+              <button
+                className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2"
+                onClick={() => {
+                  localStorage.setItem(STORAGE_KEY, 'denied');
+                  setOpen(false);
+                }}
+              >Ablehnen</button>
+              <button
+                className="inline-flex items-center justify-center rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                onClick={() => {
+                  localStorage.setItem(STORAGE_KEY, 'granted');
+                  setOpen(false);
+                  onAccept();
+                }}
+              >Zustimmen</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

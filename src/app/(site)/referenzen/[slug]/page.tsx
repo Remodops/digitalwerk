@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
-import { caseSlugs } from "@/data/cases";
+import { caseSlugs, cases } from "@/data/cases";
 
 type Params = { slug: string };
 
@@ -19,15 +19,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   if (!CASES.has(slug)) return notFound();
+  const item = cases.find((c) => c.slug === slug)!;
   return (
-    <Section title={`Referenz: ${slug}`} subtitle="Dummy‑Inhalt (MDX später)">
+    <Section title={item.title} subtitle={item.description}>
       <article className="prose prose-neutral max-w-none">
         <h2>Problem</h2>
-        <p>Beschreibung des Ausgangszustands.</p>
+        <p>{item.problem}</p>
         <h2>Lösung</h2>
-        <p>Welche Maßnahmen wurden umgesetzt?</p>
+        <p>{item.solution}</p>
         <h2>Ergebnis</h2>
-        <p>Konkrete Kennzahlen und qualitative Effekte.</p>
+        <p>{item.result}</p>
       </article>
     </Section>
   );

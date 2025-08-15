@@ -23,7 +23,7 @@ export const ANALYTICS_PROVIDER: AnalyticsProvider = (
 
 export const ENABLE_CONSENT: boolean = readBoolean(
   process.env.NEXT_PUBLIC_ENABLE_CONSENT,
-  false,
+  true,
 );
 
 export const ENABLE_BLOG: boolean = readBoolean(

@@ -11,23 +11,23 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <Section title="Warum Digitalwerk?" subtitle="Die 3 Säulen unseres Angebots.">
+      <Section title="Warum Digitalwerk?" subtitle="Was Sie konkret davon haben – die 3 Säulen unseres Angebots." className="pt-10">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Schnell & Effizient</div>
-            <p className="mt-1 text-neutral-700">Fertigstellung in 2–3 Wochen – ohne unnötigen Ballast.</p>
+            <div className="font-medium">Schnell zum Ergebnis</div>
+            <p className="mt-1 text-neutral-700">Go‑Live in 2–3 Wochen – mehr Anfragen ohne Agentur‑Overhead.</p>
           </li>
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Messbar</div>
-            <p className="mt-1 text-neutral-700">Von Ladezeit bis Conversion – transparent nachweisbar.</p>
+            <div className="font-medium">Messbar mehr Wirkung</div>
+            <p className="mt-1 text-neutral-700">Von Ladezeit bis Conversion – Kennzahlen transparent nachvollziehbar.</p>
           </li>
           <li className="rounded-lg border p-4">
-            <div className="font-medium">Direkt</div>
-            <p className="mt-1 text-neutral-700">Dein Projekt, ein Ansprechpartner, null Bürokratie.</p>
+            <div className="font-medium">Direkte Zusammenarbeit</div>
+            <p className="mt-1 text-neutral-700">Ein Ansprechpartner, klare Prozesse – Sie sparen Zeit und Nerven.</p>
           </li>
         </ul>
       </Section>
-      <Section title="Leistungsteaser" subtitle="Kurzüberblick – Details auf der Leistungsseite.">
+      <Section title="Leistungsteaser" subtitle="Kurzüberblick – Details auf der Leistungsseite." className="pt-6">
         <Container className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {[{name:"Kickstart",desc:"Für kleine, fokussierte Projekte."},{name:"Wachstum",desc:"Mehr Seiten, mehr Funktionen, mehr Leads."},{name:"Individuell",desc:"Maßgeschneiderte Lösungen für komplexe Anforderungen."}].map((p) => (
             <div key={p.name} className="rounded-xl border p-6">
