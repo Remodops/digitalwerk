@@ -3,7 +3,7 @@ import { withPageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/shared/PageHero";
 
-export const metadata = withPageMeta({ title: "Über uns" });
+export const metadata = withPageMeta({ title: "Über uns", description: "Mission, Werte und Kompetenz – persönlich und greifbar." });
 
 export default function Page() {
   return (

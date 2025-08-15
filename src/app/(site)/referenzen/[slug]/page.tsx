@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  return withPageMeta({ title: `Referenz – ${slug}` });
+  const item = cases.find((c) => c.slug === slug);
+  return withPageMeta({ title: item ? `Referenz – ${item.title}` : `Referenz – ${slug}`, description: item?.description });
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
@@ -23,11 +24,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   return (
     <Section title={item.title} subtitle={item.description}>
       <article className="prose prose-neutral max-w-none">
-        <h2>Problem</h2>
+        <h3>Problem</h3>
         <p>{item.problem}</p>
-        <h2>Lösung</h2>
+        <h3>Lösung</h3>
         <p>{item.solution}</p>
-        <h2>Ergebnis</h2>
+        <h3>Ergebnis</h3>
         <p>{item.result}</p>
       </article>
     </Section>

@@ -4,8 +4,13 @@ import { Container } from "@/components/ui/Container";
 import Link from "next/link";
 import { cases } from "@/data/cases";
 import { HighlightCases } from "@/components/home/HighlightCases";
+import { withPageMeta } from "@/lib/seo";
 
 export const dynamic = "force-static";
+export const metadata = withPageMeta({
+  title: "Digitalwerk",
+  description: "Go‑Live in 2–3 Wochen: messbar mehr Anfragen ohne Agentur‑Overhead. Klare Prozesse, saubere Technik, starke Ergebnisse.",
+});
 
 export default function Page() {
   return (
@@ -37,6 +42,12 @@ export default function Page() {
             </div>
           ))}
         </Container>
+      </Section>
+      <Section className="pt-2" title="Bereit für den nächsten Schritt?" subtitle="20 Minuten Call – Ziel, Umfang, Festpreis.">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link href="/kontakt" className="inline-flex items-center justify-center rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">Kostenloses Erstgespräch</Link>
+          <Link href="/referenzen" className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-black hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2">Projekte ansehen</Link>
+        </div>
       </Section>
       <Section title="Referenzen‑Highlight" subtitle="Einblick in Ergebnisse.">
         <Container>

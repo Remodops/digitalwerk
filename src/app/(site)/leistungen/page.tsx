@@ -4,7 +4,7 @@ import { withPageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/shared/PageHero";
 import Link from "next/link";
 
-export const metadata = withPageMeta({ title: "Leistungen" });
+export const metadata = withPageMeta({ title: "Leistungen", description: "Pakete, Ablauf und Werte – klar strukturiert. Go‑Live in 2–3 Wochen." });
 
 export default function Page() {
   const services = [

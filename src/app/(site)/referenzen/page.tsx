@@ -4,7 +4,10 @@ import { withPageMeta } from "@/lib/seo";
 import { CasesGrid } from "./CasesGrid";
 import { cases } from "@/data/cases";
 
-export const metadata = withPageMeta({ title: "Referenzen" });
+export const metadata = withPageMeta({
+  title: "Referenzen",
+  description: "Ausgewählte Projekte: Problem, Lösung und Ergebnis im Überblick.",
+});
 
 export default function Page() {
   return (
