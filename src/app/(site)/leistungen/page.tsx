@@ -44,15 +44,15 @@ export default function Page() {
     },
   ];
   const packages = [
-    { name: "Launch", price: "ab 1.400 €", features: ["1 Seite", "Basis‑SEO", "Launch in 1–2 Wochen"] },
-    { name: "Business", price: "ab 2.500 €", features: ["bis 5 Seiten", "SEO & Tracking vorbereitet", "CMS optional"] },
+    { name: "Launch", price: "ab 1.400 €", features: ["1 Seite", "Basis‑SEO", "Launch in 2-3 Wochen"] },
+    { name: "Business", price: "ab 2.500 €", features: ["bis 5 Seiten", "SEO & Tracking vorbereitet", "Content‑Einpflege (einmalig)"] },
     { name: "Pro", price: "ab 4.000 €", features: ["> 5 Seiten", "Module & Integrationen", "Content‑Integration"] },
   ];
   return (
     <>
       <PageHero title="Leistungen" subtitle="Pakete, Ablauf und Werte – klar strukturiert." bgImageSrc="/images/leistungen/code-laptop.jpg" />
       <Section title="Für wen ist das geeignet?" subtitle="Für Unternehmer, Selbstständige und kleine Teams, die ohne lange Abstimmungswege eine moderne Website möchten – schnell, klar und messbar.">
-       
+        <></>
       </Section>
       <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
