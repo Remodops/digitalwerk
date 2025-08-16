@@ -7,14 +7,34 @@ import Link from 'next/link';
 
 export function ContactForm() {
   const [state, setState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState('submitting');
-    // Pseudocode: send to API or external service
-    // await fetch('/api/contact', { method: 'POST', body: new FormData(e.currentTarget) })
-    await new Promise((r) => setTimeout(r, 600));
-    setState('success');
+    setErrorMessage('');
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Ein Fehler ist aufgetreten');
+      }
+
+      setState('success');
+      // Formular nach erfolgreichem Versand zurücksetzen
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      setState('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Ein unbekannter Fehler ist aufgetreten');
+    }
   }
 
   return (
@@ -59,15 +79,27 @@ export function ContactForm() {
           zu.
         </label>
       </div>
-      {/* Honeypot/Rate‑Limit Pseudocode: */}
-      {/* <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" /> */}
-      {/* Server: if company filled => spam; implement ip-based rate limit */}
+      {/* Honeypot für Spam-Schutz */}
+      <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      
       <div>
         <Button type="submit" disabled={state === 'submitting'}>
           {state === 'submitting' ? 'Senden…' : 'Absenden'}
         </Button>
-        {state === 'success' && <span role="status" className="ml-3 text-sm text-green-700">Danke! Wir melden uns.</span>}
-        {state === 'error' && <span role="status" className="ml-3 text-sm text-red-700">Fehler beim Senden.</span>}
+        {state === 'success' && (
+          <div role="status" className="mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+            <p className="text-sm text-green-700">
+              ✅ Danke! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+            </p>
+          </div>
+        )}
+        {state === 'error' && (
+          <div role="status" className="mt-3 p-3 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-sm text-red-700">
+              ❌ {errorMessage || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'}
+            </p>
+          </div>
+        )}
       </div>
     </form>
   );
