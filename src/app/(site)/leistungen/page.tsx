@@ -37,6 +37,7 @@ export default function Page() {
   const packages = [
     {
       name: "Launch",
+      icon: "🚀",
       price: "ab 1.500 €",
       features: [
         "Perfekt für den Start – eine Seite, optimiert für Google & mobil. Fertigstellung i. d. R. in 2–3 Wochen.",
@@ -44,6 +45,7 @@ export default function Page() {
     },
     {
       name: "Business",
+      icon: "💼",
       price: "ab 2.500 €",
       features: [
         "Bis zu 5 Seiten, inkl. SEO‑Grundlage & Content‑Einpflege. Ideal für Selbstständige & kleine Unternehmen.",
@@ -51,6 +53,7 @@ export default function Page() {
     },
     {
       name: "Pro",
+      icon: "🧩",
       price: "ab 4.000 €",
       features: [
         "Für wachsende Unternehmen – mehr als 5 Seiten, individuelle Module und tiefe Integrationen.",
@@ -120,7 +123,10 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {packages.map((p) => (
             <div key={p.name} className="rounded-xl border bg-neutral-50 p-6 shadow-sm">
-              <h3 className="text-lg font-semibold">{p.name}</h3>
+              <div className="flex items-center gap-2">
+                <span aria-hidden className="text-xl">{p.icon}</span>
+                <h3 className="text-lg font-semibold">{p.name}</h3>
+              </div>
               <p className="mt-1 text-neutral-600">{p.price}</p>
               <div className="mt-4 space-y-2 text-sm text-neutral-700">
                 {p.features.map((f) => (
