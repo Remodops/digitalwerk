@@ -22,7 +22,7 @@ export function Hero() {
           Websites, die verkaufen. Automationen, die entlasten.
         </h1>
         <p className="mt-4 max-w-2xl text-neutral-200">
-          Ihre Website bringt Ihnen in 2–3 Wochen messbar mehr Anfragen – ohne Agentur‑Overhead.
+          Solide Grundlage für messbare Performance und Sichtbarkeit – ohne Agentur‑Overhead.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href="/kontakt" className="inline-flex items-center justify-center rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">Kostenloses Erstgespräch</Link>

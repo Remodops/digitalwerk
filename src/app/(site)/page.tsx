@@ -9,7 +9,7 @@ import { withPageMeta } from "@/lib/seo";
 export const dynamic = "force-static";
 export const metadata = withPageMeta({
   title: "Digitalwerk",
-  description: "Go‑Live in 2–3 Wochen: messbar mehr Anfragen ohne Agentur‑Overhead. Klare Prozesse, saubere Technik, starke Ergebnisse.",
+  description: "Go‑Live in 2–3 Wochen: klare Prozesse, saubere Technik und messbare Performance – ohne Agentur‑Overhead.",
 });
 
 export default function Page() {
@@ -20,7 +20,7 @@ export default function Page() {
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 text-sm text-neutral-800">
           <li className="rounded-lg border p-4">
             <div className="font-medium">Schnell zum Ergebnis</div>
-            <p className="mt-1 text-neutral-700">Go‑Live in 2–3 Wochen – mehr Anfragen ohne Agentur‑Overhead.</p>
+            <p className="mt-1 text-neutral-700">Go‑Live in 2–3 Wochen – ohne Agentur‑Overhead.</p>
           </li>
           <li className="rounded-lg border p-4">
             <div className="font-medium">Messbar mehr Wirkung</div>
