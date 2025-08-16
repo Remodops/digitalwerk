@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Nav } from "./Nav";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export function Header() {
@@ -10,6 +10,8 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const menuFirstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!isHome) return;
@@ -18,6 +20,28 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
+
+  useEffect(() => {
+    if (!open) {
+      previouslyFocusedRef.current?.focus();
+      return;
+    }
+    // Fokus ins Menü setzen und ESC zum Schließen
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const t = setTimeout(() => menuFirstLinkRef.current?.focus(), 0);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   if (!isHome) {
     return (
@@ -31,7 +55,10 @@ export function Header() {
             type="button"
             aria-label="Menü öffnen"
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => {
+              if (!open) previouslyFocusedRef.current = document.activeElement as HTMLElement;
+              setOpen((v) => !v);
+            }}
             className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-800 hover:text-black hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-black/20 transition"
           >
             {open ? (
@@ -45,7 +72,7 @@ export function Header() {
           <div className="px-4 sm:px-6 lg:px-8">
             <nav className="mt-2 rounded-2xl bg-white/90 backdrop-blur ring-1 ring-black/10 p-3 text-sm text-neutral-800 md:hidden">
               <ul className="flex flex-col gap-2">
-                <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/">Start</Link></li>
+                <li><Link ref={menuFirstLinkRef} onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/">Start</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/leistungen">Leistungen</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/referenzen">Referenzen</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/ueber-uns">Über uns</Link></li>
@@ -79,7 +106,10 @@ export function Header() {
           type="button"
           aria-label="Menü öffnen"
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            if (!open) previouslyFocusedRef.current = document.activeElement as HTMLElement;
+            setOpen((v) => !v);
+          }}
           className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
         >
           {open ? (
@@ -99,7 +129,7 @@ export function Header() {
         <div className="px-4 sm:px-6 lg:px-8">
           <nav className="mt-2 rounded-2xl bg-black/40 backdrop-blur-sm ring-1 ring-white/15 p-3 text-sm text-white/90 md:hidden">
             <ul className="flex flex-col gap-2">
-              <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/">Start</Link></li>
+              <li><Link ref={menuFirstLinkRef} onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/">Start</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/leistungen">Leistungen</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/referenzen">Referenzen</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/ueber-uns">Über uns</Link></li>

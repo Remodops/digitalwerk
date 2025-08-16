@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { CaseData } from '@/data/cases';
@@ -13,18 +13,33 @@ type CasesGridProps = {
 
 export function CasesGrid({ items }: CasesGridProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
 
   const close = useCallback(() => setLightboxIndex(null), []);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close();
+      }
       if (e.key === 'ArrowRight') setLightboxIndex((idx) => (idx === null ? null : (idx + 1) % items.length));
       if (e.key === 'ArrowLeft') setLightboxIndex((idx) => (idx === null ? null : (idx - 1 + items.length) % items.length));
     }
+    // Scroll sperren
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    // Close-Button fokussieren
+    setTimeout(() => closeButtonRef.current?.focus(), 0);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+      // Fokus zurück auf den Auslöser
+      previouslyFocusedElementRef.current?.focus();
+    };
   }, [lightboxIndex, items.length, close]);
 
   return (
@@ -35,7 +50,10 @@ export function CasesGrid({ items }: CasesGridProps) {
             <button
               type="button"
               className="group relative block h-40 w-full focus:outline-none"
-              onClick={() => setLightboxIndex(index)}
+              onClick={(e) => {
+                previouslyFocusedElementRef.current = document.activeElement as HTMLElement;
+                setLightboxIndex(index);
+              }}
               aria-label={`${c.title} vergrößert anzeigen`}
             >
               <div className="absolute inset-0">
@@ -61,11 +79,19 @@ export function CasesGrid({ items }: CasesGridProps) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Bildanzeige"
+          aria-labelledby="lightbox-title"
           className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4"
           onClick={close}
+          onKeyDown={(e) => {
+            if (e.key === 'Tab') {
+              // Fokus im Dialog halten (nur der Schließen-Button ist fokussierbar)
+              e.preventDefault();
+              closeButtonRef.current?.focus();
+            }
+          }}
         >
           <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <h2 id="lightbox-title" className="sr-only">{items[lightboxIndex].title} – Bildanzeige</h2>
             <div className="relative mx-auto w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[3/2] lg:aspect-[2/1] bg-black/20 rounded-lg overflow-hidden">
               <Image
                 src={items[lightboxIndex].imageSrc}
@@ -78,7 +104,8 @@ export function CasesGrid({ items }: CasesGridProps) {
             <button
               type="button"
               onClick={close}
-              className="absolute -top-3 -right-3 rounded-full bg-white/90 px-3 py-1 text-sm font-medium shadow hover:bg-white"
+              ref={closeButtonRef}
+              className="absolute -top-3 -right-3 rounded-full bg-white/90 px-3 py-1 text-sm font-medium shadow hover:bg-white focus:outline-none focus:ring-2 focus:ring-black"
               aria-label="Schließen"
             >
               Schließen
