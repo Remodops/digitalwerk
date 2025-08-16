@@ -22,7 +22,7 @@ export function PageHero({
   overlayOpacity = "bg-black/40",
 }: PageHeroProps) {
   return (
-    <section className={`relative isolate overflow-hidden ${gradientFrom} ${gradientTo} bg-gradient-to-b`}
+    <section className={`relative isolate overflow-hidden ${gradientFrom} ${gradientTo} bg-gradient-to-b dark:from-neutral-900 dark:to-black`}
       aria-label="Seitenkopf">
       {bgImageSrc && (
         <Image
@@ -33,8 +33,8 @@ export function PageHero({
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
         />
       )}
-      <div className={`absolute inset-0 -z-10 ${overlayOpacity}`} />
-      <Container className="py-12 sm:py-16 min-h-[22vh] sm:min-h-[28vh] flex flex-col justify-end">
+      <div className={`absolute inset-0 -z-10 ${overlayOpacity} dark:bg-black/50`} />
+      <Container className="relative z-10 py-12 sm:py-16 min-h-[22vh] sm:min-h-[28vh] flex flex-col justify-end">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">{title}</h1>
         {subtitle && <p className="mt-2 max-w-3xl text-white/85">{subtitle}</p>}
       </Container>

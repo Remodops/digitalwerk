@@ -19,8 +19,8 @@ export function Section({
       <Container>
         {title && (
           <div className="mb-4 sm:mb-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">{title}</h2>
-            {subtitle && <p className="mt-1.5 text-neutral-600">{subtitle}</p>}
+            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">{title}</h2>
+            {subtitle && <p className="mt-1.5 text-neutral-600 dark:text-neutral-300">{subtitle}</p>}
           </div>
         )}
         {children}
