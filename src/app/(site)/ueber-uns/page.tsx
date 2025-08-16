@@ -15,7 +15,7 @@ export default function Page() {
           Wir entwickeln Websites, die Vertrauen schaffen und messbar zum Wachstum beitragen – transparent, effizient und ohne unnötige Komplexität.
         </p>
       </Section>
-      <Section title="Was uns besonders macht (USP)" className="bg-neutral-50">
+      <Section title="Was uns besonders macht" className="bg-neutral-50">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 text-sm text-neutral-800">
           <li className="rounded-lg border p-4 bg-white">Planbare Ergebnisse durch klare Prozesse</li>
           <li className="rounded-lg border p-4 bg-white">Transparente Ergebnisse durch präzises Tracking</li>
@@ -30,16 +30,28 @@ export default function Page() {
           <div className="rounded-lg border p-4 bg-white">Nahtlose Anbindungen & Tracking für datenbasierte Entscheidungen</div>
         </div>
       </Section>
-      <Section title="Wie wir arbeiten">
+      <Section title="So läuft die Zusammenarbeit mit Digitalwerk IT" className="bg-neutral-50">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Card className="p-5">
+            <div className="mb-2">
+              <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 dark:bg-neutral-800">⏱️</span>
+            </div>
             <p className="text-neutral-800 text-sm">
-              Keine monatelangen Agenturprozesse: Ihre Website steht in wenigen Wochen. Wöchentliche Abstimmungen (z. B. via Zoom) sorgen dafür, dass alles Schritt für Schritt in die richtige Richtung geht – bis es 100 % zu Ihrem Unternehmen passt.
+              Keine endlosen Agenturprozesse: Ihre Website steht in wenigen Wochen. 
+            </p>
+            <p className="text-neutral-800 text-sm mt-2">
+              Wöchentliche Abstimmungen (z. B. via Zoom) stellen sicher, dass jedes Detail Schritt für Schritt in die richtige Richtung geht – bis es 100 % zu Ihrem Unternehmen passt.
             </p>
           </Card>
           <Card className="p-5">
+            <div className="mb-2">
+              <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 dark:bg-neutral-800">💬</span>
+            </div>
             <p className="text-neutral-800 text-sm">
-              Bei Digitalwerk IT gibt es keine anonyme Fließbandarbeit. Ich nehme mir die Zeit, Ihre Wünsche wirklich zu verstehen und individuell umzusetzen. Das bedeutet: direkte Kommunikation, schnelle Reaktion und Lösungen, die auf Sie zugeschnitten sind – nicht auf den Standard einer Großagentur.
+              Keine anonyme Fließbandarbeit: Bei Digitalwerk IT haben Sie direkten Kontakt.
+            </p>
+            <p className="text-neutral-800 text-sm mt-2">
+              Ich nehme mir die Zeit, Ihre Wünsche wirklich zu verstehen und individuell umzusetzen. Das bedeutet: klare Kommunikation, schnelle Reaktion und Lösungen, die exakt auf Sie zugeschnitten sind – nicht auf den Standard einer Großagentur.
             </p>
           </Card>
         </div>
