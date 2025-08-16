@@ -158,23 +158,31 @@ export default function Page() {
       </Section>
       
       <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch" className="py-6 sm:py-8">
-        <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3 list-decimal pl-6">
-          {["Kickoff","Umsetzung","Launch"].map((s, i) => {
-            const desc = {
-              Kickoff: "Ziele, Inhalte & Designideen festlegen.",
-              Umsetzung: "Website entwickeln, Inhalte einpflegen, Technik testen.",
-              Launch: "Live‑Schaltung, Übergabe & kurze Einführung.",
-            } as const;
-            return (
-              <li key={i} className="rounded-xl border p-3">
-                <div className="font-semibold">{s}</div>
-                <p className="mt-2 text-sm text-neutral-700">{desc[s as keyof typeof desc]}</p>
-              </li>
-            );
-          })}
-        </ol>
-        <div className="mt-4">
-          <Link href="/kontakt"><Button variant="accent">Projekt starten</Button></Link>
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-x-0 top-6 hidden h-px bg-neutral-200 sm:block" aria-hidden />
+          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[{ key: "Kickoff", icon: "🤝" }, { key: "Umsetzung", icon: "💻" }, { key: "Launch", icon: "🚀" }].map((step, i) => {
+              const desc = {
+                Kickoff: "Ziele, Inhalte & Designideen festlegen.",
+                Umsetzung: "Website entwickeln, Inhalte einpflegen, Technik testen.",
+                Launch: "Live‑Schaltung, Übergabe & kurze Einführung.",
+              } as const;
+              return (
+                <li key={i} className="relative flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white ring-1 ring-neutral-200">
+                    <span className="text-xl" aria-hidden>{step.icon}</span>
+                  </div>
+                  <div className="mt-3 font-semibold">{step.key}</div>
+                  <p className="mt-2 text-sm text-neutral-700">{desc[step.key as keyof typeof desc]}</p>
+                  {step.key === "Launch" && (
+                    <div className="mt-3">
+                      <Link href="/kontakt"><Button variant="accent" className="text-xs px-3 py-1.5">Go Live</Button></Link>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </Section>
       <Section title="Warum Digitalwerk IT?" subtitle="Werte, die man spürt." className="py-8 sm:py-10">
