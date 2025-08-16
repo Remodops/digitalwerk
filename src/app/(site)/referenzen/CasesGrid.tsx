@@ -46,7 +46,7 @@ export function CasesGrid({ items }: CasesGridProps) {
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {items.map((c, index) => (
-          <div key={c.slug} className="rounded-xl border overflow-hidden">
+          <div key={c.slug} className="group rounded-xl border overflow-hidden">
             <button
               type="button"
               className="group relative block h-40 w-full focus:outline-none"
@@ -57,7 +57,7 @@ export function CasesGrid({ items }: CasesGridProps) {
               aria-label={`${c.title} vergrößert anzeigen`}
             >
               <div className="absolute inset-0">
-                <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover" />
+                <Image src={c.imageSrc} alt={`${c.title} Vorschau`} fill className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]" />
               </div>
               <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
             </button>

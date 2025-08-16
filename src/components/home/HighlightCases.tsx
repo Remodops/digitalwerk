@@ -31,14 +31,15 @@ export function HighlightCases({ items }: { items: HighlightCaseItem[] }) {
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {items.map((c, i) => (
-          <div key={c.slug} className="rounded-lg border overflow-hidden">
+          <div key={c.slug} className="group rounded-lg border overflow-hidden">
             <button
               type="button"
               className="relative block h-32 w-full focus:outline-none"
               onClick={() => setLightboxIndex(i)}
               aria-label={`${c.title} vergrößert anzeigen`}
             >
-              <Image src={c.imageSrc} alt={`${c.title} – Projektvorschau`} fill className="object-cover" />
+              <Image src={c.imageSrc} alt={`${c.title} – Projektvorschau`} fill className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]" />
+              <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
             </button>
             <div className="p-4">
               <div className="font-semibold">{c.title}</div>
