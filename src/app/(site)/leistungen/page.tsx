@@ -158,9 +158,7 @@ export default function Page() {
       </Section>
       
       <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch" className="py-6 sm:py-8">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-x-0 top-6 hidden h-px bg-neutral-200 sm:block" aria-hidden />
-          <div className="pointer-events-none absolute right-0 top-6 hidden h-px w-[16.6667%] bg-white sm:block" aria-hidden />
+        <div>
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[{ key: "Kickoff", icon: "🤝" }, { key: "Umsetzung", icon: "💻" }, { key: "Launch", icon: "🚀" }].map((step, i) => {
               const desc = {
@@ -169,10 +167,16 @@ export default function Page() {
                 Launch: "Live‑Schaltung, Übergabe & kurze Einführung.",
               } as const;
               return (
-                <li key={i} className="relative flex flex-col items-center text-center sm:items-start sm:text-left">
-                  <div className="z-10 flex items-center gap-2">
-                    <span className="text-sm font-semibold text-neutral-500">{i + 1}.</span>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white ring-1 ring-neutral-200">
+                <li key={i} className="flex flex-col items-center text-center">
+                  <div className="text-xs font-semibold text-neutral-500">{i + 1}.</div>
+                  <div className="relative mt-1 w-full h-12">
+                    {i > 0 && (
+                      <div className="absolute left-0 right-1/2 top-1/2 -translate-y-1/2 hidden h-px bg-neutral-200 sm:block" aria-hidden />
+                    )}
+                    {i < 2 && (
+                      <div className="absolute left-1/2 right-0 top-1/2 -translate-y-1/2 hidden h-px bg-neutral-200 sm:block" aria-hidden />
+                    )}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white ring-1 ring-neutral-200">
                       <span className="text-xl" aria-hidden>{step.icon}</span>
                     </div>
                   </div>
