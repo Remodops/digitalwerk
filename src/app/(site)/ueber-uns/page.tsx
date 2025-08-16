@@ -30,7 +30,7 @@ export default function Page() {
           <div className="rounded-lg border p-4 bg-white">Nahtlose Anbindungen & Tracking für datenbasierte Entscheidungen</div>
         </div>
       </Section>
-      <Section title="So läuft die Zusammenarbeit mit Digitalwerk IT" className="bg-neutral-50">
+      <Section title="So läuft die Zusammenarbeit mit Digitalwerk" className="bg-neutral-50">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Card className="p-5">
             <div className="mb-2">
@@ -48,7 +48,7 @@ export default function Page() {
               <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 dark:bg-neutral-800">💬</span>
             </div>
             <p className="text-neutral-800 text-sm">
-              Keine anonyme Fließbandarbeit: Bei Digitalwerk IT haben Sie direkten Kontakt.
+              Keine anonyme Fließbandarbeit: Bei Digitalwerk haben Sie direkten Kontakt.
             </p>
             <p className="text-neutral-800 text-sm mt-2">
               Ich nehme mir die Zeit, Ihre Wünsche wirklich zu verstehen und individuell umzusetzen. Das bedeutet: klare Kommunikation, schnelle Reaktion und Lösungen, die exakt auf Sie zugeschnitten sind – nicht auf den Standard einer Großagentur.
