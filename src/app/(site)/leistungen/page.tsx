@@ -105,24 +105,29 @@ export default function Page() {
       </Section>
       <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50 py-6 sm:py-8">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {services.map((s) => (
-            <Card key={s.title} className="h-full p-5">
-              <div className="flex items-center gap-2">
-                <span aria-hidden className="text-xl">{s.icon}</span>
-                <h3 className="text-lg font-semibold text-neutral-900">{s.title}</h3>
-              </div>
-              <p className="mt-3 text-sm text-neutral-700">{s.description}</p>
-              <div className="mt-3">
-                <Link href="/kontakt" className="text-sm font-medium underline">→ Projekt starten</Link>
-              </div>
-            </Card>
-          ))}
+          {services.map((s, i) => {
+            const iconBg = ["bg-emerald-50", "bg-sky-50", "bg-violet-50", "bg-amber-50"][i % 4];
+            const cardAltBg = i % 2 === 1 ? "bg-neutral-50" : "";
+            return (
+              <Card key={s.title} className={`h-full p-5 ${cardAltBg}`}>
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className={`flex h-8 w-8 items-center justify-center rounded-full ${iconBg}`}>{s.icon}</span>
+                  <h3 className="text-lg font-semibold text-neutral-900">{s.title}</h3>
+                </div>
+                <p className="mt-3 text-sm text-neutral-700">{s.description}</p>
+                <div className="mt-3">
+                  <Link href="/kontakt" className="text-sm font-medium underline">→ Projekt starten</Link>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </Section>
       <Section id="preise" title="Pakete" subtitle="Drei klare Pakete – flexibel erweiterbar." className="py-6 sm:py-8">
+        <p className="text-sm text-neutral-700 mb-3">Transparente Preise – flexibel erweiterbar, ohne versteckte Kosten.</p>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {packages.map((p) => (
-            <div key={p.name} className="rounded-xl border bg-neutral-50 p-5 shadow-sm">
+            <div key={p.name} className="rounded-xl border bg-neutral-50 p-5 shadow-sm flex h-full flex-col">
               <div className="flex items-center gap-2">
                 <span aria-hidden className="text-xl">{p.icon}</span>
                 <h3 className="text-lg font-semibold">{p.name}</h3>
@@ -133,8 +138,8 @@ export default function Page() {
                   <p key={f}>{f}</p>
                 ))}
               </div>
-              <div className="mt-3">
-                <Link href="/kontakt"><Button variant="accent" className="w-full">Projekt starten</Button></Link>
+              <div className="mt-auto pt-3">
+                <Link href="/kontakt"><Button variant="accent" className="w-full">Paket wählen</Button></Link>
               </div>
             </div>
           ))}
@@ -157,13 +162,15 @@ export default function Page() {
         </div>
       </Section>
       
-      <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch" className="py-6 sm:py-8">
+      <Section title="Ablauf" subtitle="Kickoff → Entwurf/Feedback → Umsetzung → Test/Feinschliff → Launch" className="py-6 sm:py-8">
         <div>
-          <ol className="grid grid-cols-1 gap-y-4 sm:grid-cols-3 sm:gap-0">
-            {[{ key: "Kickoff", icon: "🤝" }, { key: "Umsetzung", icon: "💻" }, { key: "Launch", icon: "🚀" }].map((step, i) => {
+          <ol className="grid grid-cols-1 gap-y-4 sm:grid-cols-5 sm:gap-0">
+            {[{ key: "Kickoff", icon: "🤝" }, { key: "Entwurf / Feedback", icon: "📝" }, { key: "Umsetzung", icon: "💻" }, { key: "Test / Feinschliff", icon: "🧪" }, { key: "Launch", icon: "🚀" }].map((step, i, arr) => {
               const desc = {
                 Kickoff: "Ziele, Inhalte & Designideen festlegen.",
+                "Entwurf / Feedback": "Erste Entwürfe, Feedbackrunde & Anpassungen.",
                 Umsetzung: "Website entwickeln, Inhalte einpflegen, Technik testen.",
+                "Test / Feinschliff": "Qualitätssicherung, letzte Details & Performance.",
                 Launch: "Live‑Schaltung, Übergabe & kurze Einführung.",
               } as const;
               return (
@@ -173,7 +180,7 @@ export default function Page() {
                     {i > 0 && (
                       <div className="absolute left-0 right-[calc(50%+24px)] top-1/2 -translate-y-1/2 hidden h-px bg-neutral-200 z-0 sm:block" aria-hidden />
                     )}
-                    {i < 2 && (
+                    {i < arr.length - 1 && (
                       <div className="absolute left-[calc(50%+24px)] right-0 top-1/2 -translate-y-1/2 hidden h-px bg-neutral-200 z-0 sm:block" aria-hidden />
                     )}
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-white ring-1 ring-neutral-200">
@@ -181,7 +188,7 @@ export default function Page() {
                     </div>
                   </div>
                   <div className="mt-3 font-semibold">{step.key}</div>
-                  <p className="mt-2 text-sm text-neutral-700">{desc[step.key as keyof typeof desc]}</p>
+                  <p className="mt-2 text-sm text-neutral-700 max-w-[32ch] mx-auto sm:mx-0 leading-relaxed">{desc[step.key as keyof typeof desc]}</p>
                   {step.key === "Launch" && (
                     <div className="mt-3">
                       <Link href="/kontakt"><Button variant="accent" className="text-xs px-3 py-1.5">Go Live</Button></Link>
@@ -216,7 +223,7 @@ export default function Page() {
         </div>
       </Section>
       <Section className="py-6 sm:py-8">
-        <Link href="/kontakt"><Button variant="accent">Projekt starten</Button></Link>
+        <Link href="/kontakt"><Button variant="accent">Jetzt unverbindlich anfragen</Button></Link>
       </Section>
     </>
   );
