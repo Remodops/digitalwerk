@@ -57,12 +57,47 @@ export default function Page() {
       ],
     },
   ];
+  const carePackages = [
+    {
+      name: "Basic",
+      priceMonthly: "50 €/Monat",
+      features: [
+        "Hosting + SSL",
+        "Backups & Updates",
+        "Kein Support enthalten; Änderungen separat 100 €/h",
+      ],
+    },
+    {
+      name: "Business",
+      priceMonthly: "100 €/Monat",
+      features: [
+        "Alles aus Basic",
+        "Kleine Änderungen (bis 1 h/Monat)",
+        "Monitoring & Performance‑Optimierung",
+      ],
+    },
+    {
+      name: "Premium",
+      priceMonthly: "200 €/Monat",
+      features: [
+        "Alles aus Business",
+        "Änderungen, Contentpflege & kleinere Designanpassungen (bis 4 h/Monat)",
+        "Prioritätssupport",
+      ],
+    },
+  ];
   return (
     <>
       <PageHero title="Leistungen" subtitle="Klare Leistungen, transparente Preise, schnelle Umsetzung. Von der modernen Website bis zur sicheren Cloud‑Lösung – alles ohne Agentur‑Overhead." bgImageSrc="/images/leistungen/code-laptop.jpg" bgImageAlt="Laptop mit Code auf dem Bildschirm" />
       <Section title="Für wen ist das geeignet?" subtitle="Ideal für Selbstständige, Unternehmer und kleine Teams, die schnell eine professionelle Website möchten – ohne lange Abstimmungen, ohne versteckte Kosten.">
         <div className="mt-2">
           <Link href="/kontakt"><Button variant="accent" className="mt-2">Projekt starten</Button></Link>
+        </div>
+        <div className="mt-4">
+          <Link href="#preise" className="inline-flex items-center gap-2 text-sm font-medium underline">
+            <span aria-hidden>↓</span>
+            <span>Zu den Preisen</span>
+          </Link>
         </div>
       </Section>
       <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50">
@@ -81,7 +116,7 @@ export default function Page() {
           ))}
         </div>
       </Section>
-      <Section title="Pakete" subtitle="Drei klare Pakete – flexibel erweiterbar.">
+      <Section id="preise" title="Pakete" subtitle="Drei klare Pakete – flexibel erweiterbar.">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {packages.map((p) => (
             <div key={p.name} className="rounded-xl border bg-neutral-50 p-6 shadow-sm">
@@ -100,6 +135,22 @@ export default function Page() {
         </div>
         <p className="mt-4 text-sm text-neutral-600">Individuelle Projekte kalkuliere ich flexibel nach Umfang – die Pakete dienen zur Orientierung.</p>
       </Section>
+      <Section title="Optionale Pakete">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {carePackages.map((p) => (
+            <div key={p.name} className="rounded-xl border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">{p.name}</h3>
+              <p className="mt-1 text-neutral-600">{p.priceMonthly}</p>
+              <ul className="mt-4 space-y-2 text-sm text-neutral-700">
+                {p.features.map((f) => (
+                  <li key={f} className="flex gap-2"><span className="text-neutral-400">•</span><span>{f}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Section>
+      
       <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch">
         <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3 list-decimal pl-6">
           {["Kickoff","Umsetzung","Launch"].map((s, i) => {

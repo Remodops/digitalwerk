@@ -6,14 +6,16 @@ export function Section({
   title,
   subtitle,
   className = "",
+  id,
 }: {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
   className?: string;
+  id?: string;
 }) {
   return (
-    <section className={`py-12 sm:py-16 ${className}`}>
+    <section id={id} className={`py-12 sm:py-16 ${className}`}>
       <Container>
         {title && (
           <div className="mb-6">
