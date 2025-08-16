@@ -15,12 +15,12 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-12 sm:py-16 ${className}`}>
+    <section id={id} className={`py-10 sm:py-14 ${className}`}>
       <Container>
         {title && (
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-5">
             <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">{title}</h2>
-            {subtitle && <p className="mt-2 text-neutral-600">{subtitle}</p>}
+            {subtitle && <p className="mt-1.5 text-neutral-600">{subtitle}</p>}
           </div>
         )}
         {children}

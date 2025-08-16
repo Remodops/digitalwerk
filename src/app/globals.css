@@ -5,6 +5,9 @@
 /* Systemfonts, lokale Fonts später via next/font/local */
 body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
 
+/* Sanftes Scrollen für Ankerlinks */
+html { scroll-behavior: smooth; }
+
 /* Fokus klar sichtbar */
 *:focus { outline: 2px solid #0284c7; outline-offset: 2px; }
 

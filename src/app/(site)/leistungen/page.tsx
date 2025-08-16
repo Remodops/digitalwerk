@@ -94,10 +94,10 @@ export default function Page() {
           <Link href="/kontakt"><Button variant="accent" className="mt-2">Projekt starten</Button></Link>
         </div>
         <div className="mt-4">
-          <Link href="#preise" className="inline-flex items-center gap-2 text-sm font-medium underline">
+          <Link href="#preise"><Button variant="secondary" className="inline-flex items-center gap-2">
             <span aria-hidden>↓</span>
             <span>Zu den Preisen</span>
-          </Link>
+          </Button></Link>
         </div>
       </Section>
       <Section title="Leistungsbereiche" subtitle="Was wir konkret für dein Projekt umsetzen" className="bg-neutral-50">
@@ -171,15 +171,29 @@ export default function Page() {
           <Link href="/kontakt"><Button variant="accent">Projekt starten</Button></Link>
         </div>
       </Section>
-      <Section title="Warum Digitalwerk IT?" subtitle="Werte, die man spürt.">
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 text-sm text-neutral-800">
+      <Section title="Warum Digitalwerk IT?" subtitle="Werte, die man spürt." className="py-8 sm:py-10">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-sm text-neutral-800">
           <li className="rounded-lg border p-4">Schnelle Umsetzung – ohne Abstriche bei Qualität</li>
           <li className="rounded-lg border p-4">Messbare Ergebnisse & klare Kommunikation</li>
           <li className="rounded-lg border p-4">Zukunftssichere, performante Websites</li>
           <li className="rounded-lg border p-4">Direkte Zusammenarbeit – ohne Agentur‑Overhead</li>
         </ul>
       </Section>
-      <Section>
+      <Section className="py-6 sm:py-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Card className="p-5">
+            <p className="text-neutral-800 text-sm">
+              Keine monatelangen Agenturprozesse: Ihre Website steht in wenigen Wochen. Wöchentliche Abstimmungen (z. B. via Zoom) sorgen dafür, dass alles Schritt für Schritt in die richtige Richtung geht – bis es 100 % zu Ihrem Unternehmen passt.
+            </p>
+          </Card>
+          <Card className="p-5">
+            <p className="text-neutral-800 text-sm">
+              Bei Digitalwerk IT gibt es keine anonyme Fließbandarbeit. Ich nehme mir die Zeit, Ihre Wünsche wirklich zu verstehen und individuell umzusetzen. Das bedeutet: direkte Kommunikation, schnelle Reaktion und Lösungen, die auf Sie zugeschnitten sind – nicht auf den Standard einer Großagentur.
+            </p>
+          </Card>
+        </div>
+      </Section>
+      <Section className="py-6 sm:py-8">
         <Link href="/kontakt"><Button variant="accent">Projekt starten</Button></Link>
       </Section>
     </>
