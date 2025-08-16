@@ -13,10 +13,11 @@ export default function Page() {
         <h2>1. Verantwortlicher</h2>
         <p>
           Verantwortlicher für die Datenverarbeitung auf dieser Website ist:<br/>
-          <strong>Digitalwerk</strong><br/>
-          Musterstraße 1<br/>
-          12345 Musterstadt<br/>
-          E-Mail: <a href="mailto:hallo@digitalwerk.example">hallo@digitalwerk.example</a>
+          <strong>Digitalwerk – IT Dienstleistungen</strong><br/>
+          Wilhelmstraße 73<br/>
+          38100 Braunschweig<br/>
+          Vertreten durch: Wanja Herkt<br/>
+          E-Mail: <a href="mailto:wanja@herkt.email">wanja@herkt.email</a>
         </p>
         
         <h2>2. Allgemeine Hinweise zur Datenverarbeitung</h2>
@@ -26,8 +27,19 @@ export default function Page() {
         </p>
         
         <h2>3. Hosting und Server-Logs</h2>
+        
+        <h3>3.1 Hosting-Provider</h3>
         <p>
-          Unser Hoster erhebt in sogenannten Logfiles folgende Daten, die Ihr Browser automatisch übermittelt:
+          Diese Website wird gehostet bei:
+        </p>
+        <p>
+          <strong>Vercel Inc.</strong><br/>
+          340 S Lemon Ave #4133<br/>
+          Walnut, CA 91789, USA<br/>
+          Datenschutzerklärung: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">https://vercel.com/legal/privacy-policy</a>
+        </p>
+        <p>
+          Vercel erhebt in sogenannten Logfiles folgende Daten, die Ihr Browser automatisch übermittelt:
         </p>
         <ul>
           <li>IP-Adresse des zugreifenden Rechners</li>
@@ -39,7 +51,23 @@ export default function Page() {
         <p>
           <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der ordnungsgemäßen Bereitstellung und Sicherheit der Website)<br/>
           <strong>Speicherdauer:</strong> Die Daten werden nach spätestens 7 Tagen gelöscht<br/>
-          <strong>Zweck:</strong> Sicherstellung der Funktionsfähigkeit und Sicherheit der Website
+          <strong>Zweck:</strong> Sicherstellung der Funktionsfähigkeit und Sicherheit der Website<br/>
+          <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs)
+        </p>
+        
+        <h3>3.2 DNS-Services</h3>
+        <p>
+          Für DNS-Services nutzen wir:
+        </p>
+        <p>
+          <strong>Cloudflare, Inc.</strong><br/>
+          101 Townsend St.<br/>
+          San Francisco, CA 94107, USA<br/>
+          Datenschutzerklärung: <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/de-de/privacypolicy/</a>
+        </p>
+        <p>
+          <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung der Website)<br/>
+          <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs)
         </p>
         
         <h2>4. Kontaktformular</h2>
@@ -57,7 +85,7 @@ export default function Page() {
         <p>
           <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Zustimmung zur Datenschutzerklärung)<br/>
           <strong>Zweck:</strong> Bearbeitung Ihrer Anfrage und Kontaktaufnahme<br/>
-          <strong>Speicherdauer:</strong> Ihre Daten werden gelöscht, sobald die Bearbeitung Ihrer Anfrage abgeschlossen ist und keine gesetzlichen Aufbewahrungsfristen bestehen (in der Regel nach 3 Jahren)<br/>
+          <strong>Speicherdauer:</strong> Ihre Kontaktanfrage wird gelöscht, sobald die Bearbeitung abgeschlossen ist und keine weitere Kommunikation erforderlich ist. Bei geschäftlichen Anfragen können Aufbewahrungsfristen nach HGB (6 Jahre) oder AO (10 Jahre) gelten. In der Regel erfolgt die Löschung nach spätestens 3 Jahren.<br/>
           <strong>Empfänger:</strong> Die Daten werden per E-Mail über Amazon SES an unsere Geschäfts-E-Mail-Adresse übermittelt
         </p>
         
@@ -80,12 +108,13 @@ export default function Page() {
           <strong>Anbieter:</strong> Amazon Web Services, Inc., 410 Terry Avenue North, Seattle WA 98109, USA<br/>
           <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an zuverlässigem E-Mail-Versand)<br/>
           <strong>Auftragsverarbeitung:</strong> Mit Amazon wurde ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen<br/>
+          <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO<br/>
           <strong>Datenschutzerklärung:</strong> <a href="https://aws.amazon.com/de/privacy/" target="_blank" rel="noopener noreferrer">https://aws.amazon.com/de/privacy/</a>
         </p>
         
         <h2>6. Cookies und Tracking</h2>
         <p>
-          Unsere Website verwendet optional Cookies für Analysezwecke. Sie können der Verwendung von Cookies über unser Consent-Banner zustimmen oder diese ablehnen.
+          Unsere Website kann optional Cookies für Analysezwecke verwenden. Aktuell sind alle Analytics-Features deaktiviert. Falls Analytics-Tools aktiviert werden, erscheint ein Consent-Banner, über das Sie der Verwendung von Cookies zustimmen oder diese ablehnen können.
         </p>
         
         <h3>6.1 Technisch notwendige Cookies</h3>
@@ -177,7 +206,7 @@ export default function Page() {
         
         <h2>10. Aktualität und Änderung dieser Datenschutzerklärung</h2>
         <p>
-          Diese Datenschutzerklärung ist aktuell gültig und hat den Stand von Dezember 2024. Durch die Weiterentwicklung unserer Website und Angebote oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.
+          Diese Datenschutzerklärung ist aktuell gültig und hat den Stand von August 2025. Durch die Weiterentwicklung unserer Website und Angebote oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.
         </p>
         
         <h2>11. Kontakt</h2>
@@ -185,10 +214,11 @@ export default function Page() {
           Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte können Sie uns jederzeit unter folgenden Kontaktdaten erreichen:
         </p>
         <p>
-          <strong>Digitalwerk</strong><br/>
-          Musterstraße 1<br/>
-          12345 Musterstadt<br/>
-          E-Mail: <a href="mailto:hallo@digitalwerk.example">hallo@digitalwerk.example</a>
+          <strong>Digitalwerk – IT Dienstleistungen</strong><br/>
+          Wilhelmstraße 73<br/>
+          38100 Braunschweig<br/>
+          Vertreten durch: Wanja Herkt<br/>
+          E-Mail: <a href="mailto:wanja@herkt.email">wanja@herkt.email</a>
         </p>
         
         <div className="mt-8 p-4 bg-neutral-50 border border-neutral-200 rounded-lg">
