@@ -1,4 +1,3 @@
-import { Section } from "@/components/ui/Section";
 import { withPageMeta } from "@/lib/seo";
 
 export const metadata = withPageMeta({ title: "Impressum" });

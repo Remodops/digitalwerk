@@ -178,7 +178,7 @@ export default function PrivacyContent() {
           </p>
           
           <p className="text-base text-neutral-700 mb-4">
-            <strong>Consent-Cookie:</strong> Speichert Ihre Entscheidung bezüglich der Cookie-Nutzung (Name: "digitalwerk-consent", Laufzeit: unbegrenzt bis zur Löschung)
+            <strong>Consent-Cookie:</strong> Speichert Ihre Entscheidung bezüglich der Cookie-Nutzung (Name: &quot;digitalwerk-consent&quot;, Laufzeit: unbegrenzt bis zur Löschung)
           </p>
           
           <p className="text-base text-neutral-700 mb-6">
