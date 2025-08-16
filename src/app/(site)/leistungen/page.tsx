@@ -37,7 +37,7 @@ export default function Page() {
   const packages = [
     {
       name: "Launch",
-      price: "ab 1.400 €",
+      price: "ab 1.500 €",
       features: [
         "Perfekt für den Start – eine Seite, optimiert für Google & mobil. Fertigstellung i. d. R. in 2–3 Wochen.",
       ],
@@ -98,6 +98,7 @@ export default function Page() {
             </div>
           ))}
         </div>
+        <p className="mt-4 text-sm text-neutral-600">Individuelle Projekte kalkuliere ich flexibel nach Umfang – die Pakete dienen zur Orientierung.</p>
       </Section>
       <Section title="Ablauf" subtitle="Kickoff → Umsetzung → Launch">
         <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3 list-decimal pl-6">
@@ -126,9 +127,6 @@ export default function Page() {
           <li className="rounded-lg border p-4">Zukunftssichere, performante Websites</li>
           <li className="rounded-lg border p-4">Direkte Zusammenarbeit – ohne Agentur‑Overhead</li>
         </ul>
-        <div className="mt-4">
-          <Link href="/kontakt" className="text-sm font-medium underline">→ Projekt starten</Link>
-        </div>
       </Section>
       <Section>
         <Link href="/kontakt"><Button variant="accent">Projekt starten</Button></Link>
