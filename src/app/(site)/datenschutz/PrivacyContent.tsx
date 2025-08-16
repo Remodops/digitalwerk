@@ -1,547 +1,338 @@
-'use client';
-
-import { useState } from "react";
-import Link from "next/link";
-
-// Accordion Component für Betroffenenrechte
-function AccordionItem({ title, children, icon, category = "neutral" }: { 
-  title: string; 
-  children: React.ReactNode; 
-  icon?: string;
-  category?: "info" | "action" | "neutral"
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const categoryStyles = {
-    info: {
-      border: "border-blue-200",
-      button: "hover:bg-blue-50",
-      icon: "text-blue-600",
-      content: "bg-blue-25 border-blue-200"
-    },
-    action: {
-      border: "border-orange-200", 
-      button: "hover:bg-orange-50",
-      icon: "text-orange-600",
-      content: "bg-orange-25 border-orange-200"
-    },
-    neutral: {
-      border: "border-neutral-200",
-      button: "hover:bg-neutral-50", 
-      icon: "text-neutral-600",
-      content: "bg-neutral-25 border-neutral-200"
-    }
-  };
-  
-  const styles = categoryStyles[category];
-  
-  return (
-    <div className={`border ${styles.border} rounded-lg mb-3`}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-6 py-4 text-left flex items-center justify-between ${styles.button} transition-colors rounded-t-lg`}
-        aria-expanded={isOpen}
-      >
-        <span className="flex items-center gap-3 font-semibold text-neutral-800">
-          {icon && <span className={`text-lg ${styles.icon}`}>{icon}</span>}
-          {title}
-        </span>
-        <span className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
-          ▼
-        </span>
-      </button>
-      {isOpen && (
-        <div className={`px-6 py-4 border-t ${styles.content}`}>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Highlight Box Component
-function HighlightBox({ children, type = "info" }: { children: React.ReactNode; type?: "info" | "legal" | "warning" }) {
-  const styles = {
-    info: "bg-blue-50 border-blue-200 text-blue-800",
-    legal: "bg-green-50 border-green-200 text-green-800", 
-    warning: "bg-orange-50 border-orange-200 text-orange-800"
-  };
-  
-  return (
-    <div className={`p-5 rounded-lg border ${styles[type]} text-sm`}>
-      {children}
-    </div>
-  );
-}
-
-// Section Card Component
-function SectionCard({ title, icon, children }: { title: string; icon: string; children: React.ReactNode }) {
-  return (
-    <div className="bg-white border border-neutral-200 rounded-xl p-8 mb-10 shadow-sm hover:shadow-md transition-shadow">
-      <h2 className="text-2xl font-bold text-green-600 mb-6 flex items-center gap-3">
-        <span className="text-2xl">{icon}</span>
-        {title}
-      </h2>
-      {children}
-    </div>
-  );
-}
-
 export default function PrivacyContent() {
   return (
-    <div className="min-h-screen bg-neutral-50">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-neutral-200">
-        <div className="max-w-4xl mx-auto px-6 py-3">
-          <nav className="text-sm text-neutral-600">
-            <Link href="/" className="hover:text-green-600 transition-colors">Start</Link>
-            <span className="mx-2">›</span>
-            <span className="text-neutral-800">Datenschutz</span>
-          </nav>
-        </div>
-      </div>
+    <div className="py-16 px-4 max-w-4xl mx-auto">
+      {/* H1 - Hauptüberschrift */}
+      <h1 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-12 text-left">
+        Datenschutzerklärung
+      </h1>
 
-      {/* Hero Header */}
-      <div className="bg-gradient-to-br from-neutral-50 to-blue-50">
-        <div className="max-w-4xl mx-auto px-6 py-16">
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-neutral-100">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center">
-                <span className="text-3xl">🔒</span>
-              </div>
-              <div>
-                <h1 className="text-4xl font-bold text-neutral-900">Datenschutzerklärung</h1>
-                <div className="text-sm text-neutral-500 mt-1">DSGVO-konform • Aktualisiert August 2025</div>
-              </div>
-            </div>
-            <p className="text-xl text-neutral-600 leading-relaxed">
-              Transparente Informationen zur Verarbeitung personenbezogener Daten nach Art. 13 und 14 DSGVO. 
-              Ihr Datenschutz ist uns wichtig – hier erfahren Sie, wie wir Ihre Daten verarbeiten und schützen.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        <SectionCard title="Verantwortlicher" icon="👤">
-          <p className="text-neutral-700 leading-relaxed mb-4">
+      <div className="space-y-12 text-left leading-relaxed">
+        {/* Verantwortlicher */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Verantwortlicher
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-6">
             Verantwortlicher für die Datenverarbeitung auf dieser Website ist:
           </p>
-          <HighlightBox type="info">
-            <div className="space-y-1">
-              <div><strong>Digitalwerk – IT Dienstleistungen</strong></div>
-              <div>Wilhelmstraße 73</div>
-              <div>38100 Braunschweig</div>
-              <div>Vertreten durch: Wanja Herkt</div>
-              <div>E-Mail: <a href="mailto:wanja@herkt.email" className="text-green-600 hover:text-green-700 transition-colors">wanja@herkt.email</a></div>
-            </div>
-          </HighlightBox>
-        </SectionCard>
-
-        <SectionCard title="Allgemeine Hinweise zur Datenverarbeitung" icon="📋">
-          <p className="text-neutral-700 leading-relaxed">
-            Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2021). 
-            In diesen Datenschutzinformationen informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
+          
+          <div className="bg-neutral-50 p-6 rounded-lg">
+            <p className="font-semibold text-neutral-900 mb-2">
+              Digitalwerk – IT Dienstleistungen
+            </p>
+            <p className="text-base text-neutral-700">
+              Wilhelmstraße 73<br/>
+              38100 Braunschweig<br/>
+              Vertreten durch: Wanja Herkt<br/>
+              E-Mail: <a href="mailto:wanja@herkt.email" className="text-blue-600 hover:text-blue-800 underline">wanja@herkt.email</a>
+            </p>
+          </div>
+        </section>
+        
+        {/* Allgemeine Hinweise */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Allgemeine Hinweise zur Datenverarbeitung
+          </h2>
+          <p className="text-base text-neutral-700 leading-relaxed">
+            Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2021). In diesen Datenschutzinformationen informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
           </p>
-        </SectionCard>
-
-        <SectionCard title="Hosting und Server-Logs" icon="📡">
+        </section>
+        
+        {/* Hosting und Server-Logs */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Hosting und Server-Logs
+          </h2>
+          
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-neutral-800 mb-3">Hosting-Provider</h3>
-              <p className="text-neutral-700 leading-relaxed mb-4">
+              <p className="text-base text-neutral-700 mb-4">
                 Diese Website wird gehostet bei:
               </p>
-              <HighlightBox type="info">
-                <div className="space-y-1 mb-3">
-                  <div><strong>Vercel Inc.</strong></div>
-                  <div>340 S Lemon Ave #4133</div>
-                  <div>Walnut, CA 91789, USA</div>
-                  <div>Datenschutzerklärung: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">vercel.com/legal/privacy-policy</a></div>
-                </div>
-              </HighlightBox>
               
-              <p className="text-neutral-700 leading-relaxed mb-3">
-                Vercel erhebt in sogenannten Logfiles folgende Daten, die Ihr Browser automatisch übermittelt:
-              </p>
               <div className="bg-neutral-50 p-4 rounded-lg mb-4">
-                <ul className="text-neutral-700 space-y-2">
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">📊</span>
-                    <span>IP-Adresse des zugreifenden Rechners</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">⏰</span>
-                    <span>Datum und Uhrzeit der Anfrage</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">📄</span>
-                    <span>Name und URL der abgerufenen Datei</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">🔗</span>
-                    <span>Website, von der aus der Zugriff erfolgt (Referrer-URL)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">💻</span>
-                    <span>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers</span>
-                  </li>
-                </ul>
+                <p className="font-semibold text-neutral-900 mb-1">Vercel Inc.</p>
+                <p className="text-base text-neutral-700">
+                  340 S Lemon Ave #4133<br/>
+                  Walnut, CA 91789, USA<br/>
+                  Datenschutzerklärung: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">vercel.com/legal/privacy-policy</a>
+                </p>
               </div>
               
-              <div className="grid gap-3">
-                <HighlightBox type="legal">
-                  <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der ordnungsgemäßen Bereitstellung und Sicherheit der Website)
-                </HighlightBox>
-                <HighlightBox type="legal">
-                  <strong>Speicherdauer:</strong> Die Daten werden nach spätestens 7 Tagen gelöscht
-                </HighlightBox>
-                <HighlightBox type="legal">
-                  <strong>Zweck:</strong> Sicherstellung der Funktionsfähigkeit und Sicherheit der Website
-                </HighlightBox>
-                <HighlightBox type="warning">
-                  <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs)
-                </HighlightBox>
+              <p className="text-base text-neutral-700 mb-3">
+                Vercel erhebt in sogenannten Logfiles folgende Daten, die Ihr Browser automatisch übermittelt:
+              </p>
+              
+              <ul className="text-base text-neutral-700 space-y-2 list-disc pl-6 mb-4">
+                <li>IP-Adresse des zugreifenden Rechners</li>
+                <li>Datum und Uhrzeit der Anfrage</li>
+                <li>Name und URL der abgerufenen Datei</li>
+                <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+                <li>Verwendeter Browser und ggf. das Betriebssystem</li>
+              </ul>
+              
+              <div className="space-y-3">
+                <p className="text-base text-neutral-700"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</p>
+                <p className="text-base text-neutral-700"><strong>Speicherdauer:</strong> Die Daten werden nach spätestens 7 Tagen gelöscht</p>
+                <p className="text-base text-neutral-700"><strong>Zweck:</strong> Sicherstellung der Funktionsfähigkeit und Sicherheit der Website</p>
               </div>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold text-neutral-800 mb-3">DNS-Services</h3>
-              <p className="text-neutral-700 leading-relaxed mb-4">
+              <p className="text-base text-neutral-700 mb-4">
                 Für DNS-Services nutzen wir:
               </p>
-              <HighlightBox type="info">
-                <div className="space-y-1 mb-3">
-                  <div><strong>Cloudflare, Inc.</strong></div>
-                  <div>101 Townsend St.</div>
-                  <div>San Francisco, CA 94107, USA</div>
-                  <div>Datenschutzerklärung: <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">cloudflare.com/de-de/privacypolicy</a></div>
-                </div>
-              </HighlightBox>
               
-              <div className="grid gap-3">
-                <HighlightBox type="legal">
-                  <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung der Website)
-                </HighlightBox>
-                <HighlightBox type="warning">
-                  <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs)
-                </HighlightBox>
+              <div className="bg-neutral-50 p-4 rounded-lg mb-4">
+                <p className="font-semibold text-neutral-900 mb-1">Cloudflare, Inc.</p>
+                <p className="text-base text-neutral-700">
+                  101 Townsend St.<br/>
+                  San Francisco, CA 94107, USA<br/>
+                  Datenschutzerklärung: <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">cloudflare.com/de-de/privacypolicy</a>
+                </p>
               </div>
+              
+              <p className="text-base text-neutral-700"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</p>
             </div>
           </div>
-        </SectionCard>
-
-        <SectionCard title="Kontaktformular" icon="✉️">
-          <div className="space-y-6">
-            <p className="text-neutral-700 leading-relaxed">
-              Wenn Sie unser Kontaktformular nutzen, verarbeiten wir folgende personenbezogene Daten:
-            </p>
-            
-            <div className="bg-neutral-50 p-4 rounded-lg">
-              <div className="grid gap-3">
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-green-500">👤</span>
-                  <span><span className="font-semibold">Name</span> <span className="text-red-600">(Pflichtfeld)</span></span>
-                </div>
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-green-500">✉️</span>
-                  <span><span className="font-semibold">E-Mail-Adresse</span> <span className="text-red-600">(Pflichtfeld)</span></span>
-                </div>
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-blue-500">📞</span>
-                  <span><span className="font-semibold">Telefonnummer</span> <span className="text-neutral-500">(optional)</span></span>
-                </div>
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-blue-500">🏷️</span>
-                  <span><span className="font-semibold">Betreff</span> <span className="text-neutral-500">(optional)</span></span>
-                </div>
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-green-500">📝</span>
-                  <span><span className="font-semibold">Nachrichteninhalt</span> <span className="text-red-600">(Pflichtfeld)</span></span>
-                </div>
-                <div className="flex items-center gap-3 text-neutral-700">
-                  <span className="text-blue-500">🔍</span>
-                  <span><span className="font-semibold">IP-Adresse und Zeitpunkt der Anfrage</span> <span className="text-neutral-500">(automatisch)</span></span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid gap-3">
-              <HighlightBox type="legal">
-                <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch Zustimmung zur Datenschutzerklärung)
-              </HighlightBox>
-              <HighlightBox type="legal">
-                <strong>Zweck:</strong> Bearbeitung Ihrer Anfrage und Kontaktaufnahme
-              </HighlightBox>
-              <HighlightBox type="legal">
-                <strong>Speicherdauer:</strong> Ihre Kontaktanfrage wird gelöscht, sobald die Bearbeitung abgeschlossen ist und keine weitere Kommunikation erforderlich ist. Bei geschäftlichen Anfragen können Aufbewahrungsfristen nach HGB (6 Jahre) oder AO (10 Jahre) gelten. In der Regel erfolgt die Löschung nach spätestens 3 Jahren.
-              </HighlightBox>
-              <HighlightBox type="info">
-                <strong>Empfänger:</strong> Die Daten werden per E-Mail über Amazon SES an unsere Geschäfts-E-Mail-Adresse übermittelt
-              </HighlightBox>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-800 mb-3">🛡️ Spam-Schutz und Rate-Limiting</h3>
-              <p className="text-neutral-700 leading-relaxed mb-3">
-                Zum Schutz vor Spam verwenden wir folgende Maßnahmen:
-              </p>
-              <div className="bg-neutral-50 p-4 rounded-lg">
-                <div className="grid gap-3">
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <span className="text-orange-500">🍯</span>
-                    <span>Honeypot-Felder zur automatischen Spam-Erkennung</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <span className="text-orange-500">⏱️</span>
-                    <span>Rate-Limiting (max. 3 Anfragen pro Minute pro IP-Adresse)</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <span className="text-orange-500">✅</span>
-                    <span>Serverseitige Validierung aller Eingaben</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionCard>
-
-        <SectionCard title="E-Mail-Versand über Amazon SES" icon="📮">
-          <p className="text-neutral-700 leading-relaxed mb-4">
-            Für den Versand von E-Mails nutzen wir den Dienst Amazon Simple Email Service (SES). 
-            Ihre über das Kontaktformular übermittelten Daten werden dabei an Amazon Web Services übertragen.
+        </section>
+        
+        {/* Kontaktformular */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Kontaktformular
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-4">
+            Wenn Sie unser Kontaktformular nutzen, verarbeiten wir folgende personenbezogene Daten:
           </p>
           
-          <HighlightBox type="info">
-            <div className="space-y-1 mb-3">
-              <div><strong>Amazon Web Services, Inc.</strong></div>
-              <div>410 Terry Avenue North</div>
-              <div>Seattle WA 98109, USA</div>
-              <div>Datenschutzerklärung: <a href="https://aws.amazon.com/de/privacy/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">aws.amazon.com/de/privacy</a></div>
-            </div>
-          </HighlightBox>
+          <ul className="text-base text-neutral-700 space-y-2 list-disc pl-6 mb-6">
+            <li><strong>Name</strong> (Pflichtfeld)</li>
+            <li><strong>E-Mail-Adresse</strong> (Pflichtfeld)</li>
+            <li><strong>Telefonnummer</strong> (optional)</li>
+            <li><strong>Betreff</strong> (optional)</li>
+            <li><strong>Nachrichteninhalt</strong> (Pflichtfeld)</li>
+            <li><strong>IP-Adresse und Zeitpunkt der Anfrage</strong> (automatisch)</li>
+          </ul>
           
-          <div className="grid gap-3">
-            <HighlightBox type="legal">
-              <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an zuverlässigem E-Mail-Versand)
-            </HighlightBox>
-            <HighlightBox type="legal">
-              <strong>Auftragsverarbeitung:</strong> Mit Amazon wurde ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen
-            </HighlightBox>
-            <HighlightBox type="warning">
-              <strong>Datenübertragung in Drittländer:</strong> Die Datenübertragung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln (SCCs) gemäß Art. 46 DSGVO
-            </HighlightBox>
+          <div className="space-y-3 mb-6">
+            <p className="text-base text-neutral-700"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</p>
+            <p className="text-base text-neutral-700"><strong>Zweck:</strong> Bearbeitung Ihrer Anfrage und Kontaktaufnahme</p>
+            <p className="text-base text-neutral-700"><strong>Speicherdauer:</strong> Die Daten werden gelöscht, sobald die Bearbeitung abgeschlossen ist. Bei geschäftlichen Anfragen können Aufbewahrungsfristen nach HGB (6 Jahre) oder AO (10 Jahre) gelten.</p>
           </div>
-        </SectionCard>
-
-        <SectionCard title="Cookies und Tracking" icon="🍪">
-          <div className="space-y-6">
-            <p className="text-neutral-700 leading-relaxed">
-              Unsere Website kann optional Cookies für Analysezwecke verwenden. Aktuell sind alle Analytics-Features deaktiviert. Falls Analytics-Tools aktiviert werden, erscheint ein Consent-Banner, über das Sie der Verwendung von Cookies zustimmen oder diese ablehnen können.
+          
+          <h3 className="text-lg font-semibold text-neutral-800 mb-3">Spam-Schutz</h3>
+          <p className="text-base text-neutral-700 mb-3">
+            Zum Schutz vor Spam verwenden wir folgende Maßnahmen:
+          </p>
+          <ul className="text-base text-neutral-700 space-y-2 list-disc pl-6">
+            <li>Honeypot-Felder zur automatischen Spam-Erkennung</li>
+            <li>Rate-Limiting (max. 3 Anfragen pro Minute pro IP-Adresse)</li>
+            <li>Serverseitige Validierung aller Eingaben</li>
+          </ul>
+        </section>
+        
+        {/* E-Mail-Versand */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            E-Mail-Versand über Amazon SES
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-4">
+            Für den Versand von E-Mails nutzen wir den Dienst Amazon Simple Email Service (SES). Ihre über das Kontaktformular übermittelten Daten werden dabei an Amazon Web Services übertragen.
+          </p>
+          
+          <div className="bg-neutral-50 p-4 rounded-lg mb-4">
+            <p className="font-semibold text-neutral-900 mb-1">Amazon Web Services, Inc.</p>
+            <p className="text-base text-neutral-700">
+              410 Terry Avenue North<br/>
+              Seattle WA 98109, USA<br/>
+              Datenschutzerklärung: <a href="https://aws.amazon.com/de/privacy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">aws.amazon.com/de/privacy</a>
             </p>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Technisch notwendige Cookies</h3>
-              <p className="text-neutral-700 leading-relaxed mb-3">
-                Wir setzen technisch notwendige Cookies ein, um die Funktionsfähigkeit unserer Website sicherzustellen:
-              </p>
-              <div className="bg-neutral-50 p-4 rounded-lg mb-3">
-                <div className="text-neutral-700">
-                  <strong>Consent-Cookie:</strong> Speichert Ihre Entscheidung bezüglich der Cookie-Nutzung (Name: &quot;digitalwerk-consent&quot;, Laufzeit: unbegrenzt bis zur Löschung)
-                </div>
-              </div>
-              <HighlightBox type="legal">
-                <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Funktionsfähigkeit der Website)
-              </HighlightBox>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Analytics-Cookies (optional)</h3>
-              <p className="text-neutral-700 leading-relaxed mb-3">
-                Zur Analyse der Website-Nutzung können wir folgende datenschutzfreundliche Analytics-Dienste einsetzen:
-              </p>
-              <div className="bg-neutral-50 p-4 rounded-lg mb-4">
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3 text-neutral-700">
-                    <span className="text-blue-500 mt-1">📊</span>
-                    <span><strong>Umami Analytics:</strong> Selbst gehostet, anonymisierte Datenerfassung ohne personenbezogene Daten</span>
-                  </div>
-                  <div className="flex items-start gap-3 text-neutral-700">
-                    <span className="text-blue-500 mt-1">📊</span>
-                    <span><strong>Plausible Analytics:</strong> Datenschutzfreundliche Alternative zu Google Analytics, DSGVO-konform</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid gap-3">
-                <HighlightBox type="legal">
-                  <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung über Consent-Banner)
-                </HighlightBox>
-                <HighlightBox type="legal">
-                  <strong>Zweck:</strong> Verbesserung der Website-Performance und Benutzererfahrung
-                </HighlightBox>
-                <HighlightBox type="legal">
-                  <strong>Speicherdauer:</strong> Anonymisierte Daten werden für maximal 24 Monate gespeichert
-                </HighlightBox>
-                <HighlightBox type="info">
-                  <strong>Widerruf:</strong> Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen widerrufen
-                </HighlightBox>
-              </div>
-            </div>
           </div>
-        </SectionCard>
-
-        <SectionCard title="Ihre Rechte als betroffene Person" icon="⚖️">
-          <p className="text-neutral-700 leading-relaxed mb-6">
+          
+          <div className="space-y-3">
+            <p className="text-base text-neutral-700"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</p>
+            <p className="text-base text-neutral-700"><strong>Auftragsverarbeitung:</strong> Mit Amazon wurde ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen</p>
+          </div>
+        </section>
+        
+        {/* Cookies und Tracking */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Cookies und Tracking
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-6">
+            Unsere Website kann optional Cookies für Analysezwecke verwenden. Aktuell sind alle Analytics-Features deaktiviert. Falls Analytics-Tools aktiviert werden, erscheint ein Consent-Banner.
+          </p>
+          
+          <h3 className="text-lg font-semibold text-neutral-800 mb-3">Technisch notwendige Cookies</h3>
+          <p className="text-base text-neutral-700 mb-4">
+            Wir setzen technisch notwendige Cookies ein, um die Funktionsfähigkeit unserer Website sicherzustellen:
+          </p>
+          
+          <p className="text-base text-neutral-700 mb-4">
+            <strong>Consent-Cookie:</strong> Speichert Ihre Entscheidung bezüglich der Cookie-Nutzung (Name: "digitalwerk-consent", Laufzeit: unbegrenzt bis zur Löschung)
+          </p>
+          
+          <p className="text-base text-neutral-700 mb-6">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Funktionsfähigkeit der Website)
+          </p>
+          
+          <h3 className="text-lg font-semibold text-neutral-800 mb-3">Analytics-Cookies (optional)</h3>
+          <p className="text-base text-neutral-700 mb-4">
+            Zur Analyse der Website-Nutzung können wir folgende datenschutzfreundliche Analytics-Dienste einsetzen:
+          </p>
+          
+          <ul className="text-base text-neutral-700 space-y-2 list-disc pl-6 mb-4">
+            <li><strong>Umami Analytics:</strong> Selbst gehostet, anonymisierte Datenerfassung</li>
+            <li><strong>Plausible Analytics:</strong> Datenschutzfreundliche Alternative zu Google Analytics</li>
+          </ul>
+          
+          <div className="space-y-3">
+            <p className="text-base text-neutral-700"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</p>
+            <p className="text-base text-neutral-700"><strong>Zweck:</strong> Verbesserung der Website-Performance und Benutzererfahrung</p>
+            <p className="text-base text-neutral-700"><strong>Speicherdauer:</strong> Anonymisierte Daten werden für maximal 24 Monate gespeichert</p>
+          </div>
+        </section>
+        
+        {/* Betroffenenrechte */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Ihre Rechte als betroffene Person
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-6">
             Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:
           </p>
           
-          <div className="space-y-3">
-            <AccordionItem title="Auskunftsrecht (Art. 15 DSGVO)" icon="🔍" category="info">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht, Auskunft über die von uns verarbeiteten personenbezogenen Daten zu verlangen. Dies umfasst Informationen über Verarbeitungszwecke, Kategorien verarbeiteter Daten, Empfänger und geplante Speicherdauer.
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Auskunftsrecht (Art. 15 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht, Auskunft über die von uns verarbeiteten personenbezogenen Daten zu verlangen.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Recht auf Berichtigung (Art. 16 DSGVO)" icon="✏️" category="info">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht auf Berichtigung unrichtiger oder Vervollständigung unvollständiger personenbezogener Daten, die wir über Sie verarbeiten.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht auf Berichtigung unrichtiger oder Vervollständigung unvollständiger personenbezogener Daten.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Recht auf Löschung (Art. 17 DSGVO)" icon="🗑️" category="action">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht auf Löschung Ihrer personenbezogenen Daten, sofern keine gesetzlichen Aufbewahrungsfristen bestehen oder andere rechtliche Gründe gegen eine Löschung sprechen.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Recht auf Löschung (Art. 17 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht auf Löschung Ihrer personenbezogenen Daten, sofern keine gesetzlichen Aufbewahrungsfristen bestehen.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)" icon="⏸️" category="action">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen, wenn bestimmte Voraussetzungen erfüllt sind.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Recht auf Datenübertragbarkeit (Art. 20 DSGVO)" icon="📤" category="info">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und diese an einen anderen Verantwortlichen zu übermitteln.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem strukturierten Format zu erhalten.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Widerspruchsrecht (Art. 21 DSGVO)" icon="🚫" category="action">
-              <p className="text-neutral-700 leading-relaxed">
-                Sie haben das Recht, der Verarbeitung Ihrer personenbezogenen Daten aus Gründen Ihrer besonderen Situation zu widersprechen, wenn die Verarbeitung auf Art. 6 Abs. 1 lit. f DSGVO beruht.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Widerspruchsrecht (Art. 21 DSGVO)</h3>
+              <p className="text-base text-neutral-700">
+                Sie haben das Recht, der Verarbeitung Ihrer personenbezogenen Daten zu widersprechen.
               </p>
-            </AccordionItem>
+            </div>
             
-            <AccordionItem title="Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)" icon="↩️" category="neutral">
-              <p className="text-neutral-700 leading-relaxed">
-                Sofern die Verarbeitung auf einer Einwilligung beruht, haben Sie das Recht, diese jederzeit zu widerrufen. Der Widerruf berührt nicht die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung.
+            <div>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-3">Beschwerderecht bei der Aufsichtsbehörde (Art. 77 DSGVO)</h3>
+              <p className="text-base text-neutral-700 mb-4">
+                Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
               </p>
-            </AccordionItem>
-            
-            <AccordionItem title="Beschwerderecht bei der Aufsichtsbehörde (Art. 77 DSGVO)" icon="🏛️" category="neutral">
-              <div className="space-y-3">
-                <p className="text-neutral-700 leading-relaxed">
-                  Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über unsere Verarbeitung personenbezogener Daten zu beschweren.
+              
+              <div className="bg-neutral-50 p-4 rounded-lg">
+                <p className="font-semibold text-neutral-900 mb-1">Zuständige Aufsichtsbehörde in Niedersachsen:</p>
+                <p className="text-base text-neutral-700">
+                  Landesbeauftragte für den Datenschutz Niedersachsen<br/>
+                  Prinzenstraße 5, 30159 Hannover<br/>
+                  E-Mail: poststelle@lfd.niedersachsen.de
                 </p>
-                <HighlightBox type="info">
-                  <div>
-                    <strong>Zuständige Aufsichtsbehörde in Niedersachsen:</strong><br/>
-                    Landesbeauftragte für den Datenschutz Niedersachsen<br/>
-                    Prinzenstraße 5, 30159 Hannover<br/>
-                    E-Mail: poststelle@lfd.niedersachsen.de
-                  </div>
-                </HighlightBox>
-              </div>
-            </AccordionItem>
-          </div>
-        </SectionCard>
-
-        <SectionCard title="Datensicherheit" icon="🔒">
-          <p className="text-neutral-700 leading-relaxed mb-4">
-            Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert.
-          </p>
-          <div className="bg-neutral-50 p-4 rounded-lg">
-            <div className="grid gap-3">
-              <div className="flex items-center gap-3 text-neutral-700">
-                <span className="text-green-500">🔐</span>
-                <span>SSL/TLS-Verschlüsselung für die gesamte Website</span>
-              </div>
-              <div className="flex items-center gap-3 text-neutral-700">
-                <span className="text-green-500">⚙️</span>
-                <span>Sichere Server-Konfiguration</span>
-              </div>
-              <div className="flex items-center gap-3 text-neutral-700">
-                <span className="text-green-500">🔄</span>
-                <span>Regelmäßige Sicherheitsupdates</span>
-              </div>
-              <div className="flex items-center gap-3 text-neutral-700">
-                <span className="text-green-500">🚪</span>
-                <span>Zugriffsbeschränkungen auf Serverdaten</span>
               </div>
             </div>
           </div>
-        </SectionCard>
+        </section>
         
-        <SectionCard title="Automatisierte Entscheidungsfindung" icon="🤖">
-          <p className="text-neutral-700 leading-relaxed">
+        {/* Datensicherheit */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Datensicherheit
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-4">
+            Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten zu schützen:
+          </p>
+          
+          <ul className="text-base text-neutral-700 space-y-2 list-disc pl-6">
+            <li>SSL/TLS-Verschlüsselung für die gesamte Website</li>
+            <li>Sichere Server-Konfiguration</li>
+            <li>Regelmäßige Sicherheitsupdates</li>
+            <li>Zugriffsbeschränkungen auf Serverdaten</li>
+          </ul>
+        </section>
+        
+        {/* Automatisierte Entscheidungsfindung */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Automatisierte Entscheidungsfindung
+          </h2>
+          <p className="text-base text-neutral-700">
             Wir verwenden keine automatisierte Entscheidungsfindung oder Profiling im Sinne von Art. 22 DSGVO.
           </p>
-        </SectionCard>
+        </section>
         
-        <SectionCard title="Aktualität und Änderung dieser Datenschutzerklärung" icon="📅">
-          <p className="text-neutral-700 leading-relaxed">
-            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand von August 2025. Durch die Weiterentwicklung unserer Website und Angebote oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.
+        {/* Aktualität */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Aktualität und Änderung dieser Datenschutzerklärung
+          </h2>
+          <p className="text-base text-neutral-700">
+            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand von August 2025. Durch die Weiterentwicklung unserer Website kann es notwendig werden, diese Datenschutzerklärung zu ändern.
           </p>
-        </SectionCard>
+        </section>
         
-        <SectionCard title="Kontakt" icon="📞">
-          <p className="text-neutral-700 leading-relaxed mb-4">
-            Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte können Sie uns jederzeit unter folgenden Kontaktdaten erreichen:
+        {/* Kontakt */}
+        <section>
+          <h2 className="text-xl font-semibold text-neutral-800 mb-6">
+            Kontakt
+          </h2>
+          
+          <p className="text-base text-neutral-700 mb-6">
+            Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte können Sie uns jederzeit kontaktieren:
           </p>
-          <HighlightBox type="info">
-            <div className="space-y-1">
-              <div><strong>Digitalwerk – IT Dienstleistungen</strong></div>
-              <div>Wilhelmstraße 73</div>
-              <div>38100 Braunschweig</div>
-              <div>Vertreten durch: Wanja Herkt</div>
-              <div>E-Mail: <a href="mailto:wanja@herkt.email" className="text-green-600 hover:text-green-700 transition-colors">wanja@herkt.email</a></div>
-            </div>
-          </HighlightBox>
-        </SectionCard>
-        
-        {/* Wichtiger Hinweis */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 border-l-4 border-green-500 rounded-lg shadow-sm">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">ℹ️</span>
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-800 mb-2">Rechtlicher Hinweis</h3>
-              <p className="text-neutral-700 leading-relaxed mb-0">
-                Diese Datenschutzerklärung wurde nach bestem Wissen und Gewissen erstellt. Sie stellt jedoch keine Rechtsberatung dar. 
-                Für eine rechtssichere Datenschutzerklärung empfehlen wir die Beratung durch einen spezialisierten Anwalt oder Datenschutzbeauftragten.
-              </p>
-            </div>
+          
+          <div className="bg-neutral-50 p-6 rounded-lg">
+            <p className="font-semibold text-neutral-900 mb-2">
+              Digitalwerk – IT Dienstleistungen
+            </p>
+            <p className="text-base text-neutral-700">
+              Wilhelmstraße 73<br/>
+              38100 Braunschweig<br/>
+              Vertreten durch: Wanja Herkt<br/>
+              E-Mail: <a href="mailto:wanja@herkt.email" className="text-blue-600 hover:text-blue-800 underline">wanja@herkt.email</a>
+            </p>
           </div>
-        </div>
-      </div>
-      
-      {/* Footer */}
-      <div className="bg-neutral-800 text-white">
-        <div className="max-w-4xl mx-auto px-6 py-8">
-          <div className="text-center space-y-4">
-            <div className="text-lg font-semibold">Digitalwerk – IT Dienstleistungen</div>
-            <div className="text-neutral-300">
-              Wilhelmstraße 73 • 38100 Braunschweig • Deutschland
-            </div>
-            <div className="text-neutral-300">
-              E-Mail: <a href="mailto:wanja@herkt.email" className="text-green-400 hover:text-green-300 transition-colors">wanja@herkt.email</a>
-            </div>
-            <div className="pt-4 border-t border-neutral-700 text-sm text-neutral-400">
-              © 2025 Digitalwerk. Diese Datenschutzerklärung entspricht den Anforderungen der DSGVO.
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   );
