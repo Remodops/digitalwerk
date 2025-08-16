@@ -13,8 +13,10 @@ export function Hero() {
         priority
         className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
-      {/* Dunkles Overlay für bessere Lesbarkeit */}
-      <div className="absolute inset-0 -z-10 bg-black/60" />
+      {/* Dezente Abdunkelung */}
+      <div className="absolute inset-0 -z-10 bg-black/50" />
+      {/* Farbverlaufs-Overlay für bessere Lesbarkeit und Tiefe */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       <Container className="py-16 sm:py-24">
         <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white">
           Websites, die verkaufen. Automationen, die entlasten.
