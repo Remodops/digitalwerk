@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
+      <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
         <Script id="theme-init" strategy="beforeInteractive">{`
           (function(){
             try {
@@ -34,7 +34,7 @@ export default function RootLayout({
         <SkipLink />
         <Header />
         {(ENABLE_ANALYTICS || ENABLE_CONSENT) && <ModulesMount />}
-        <main id={SKIP_TARGET_ID} role="main">
+        <main id={SKIP_TARGET_ID} role="main" className="flex-1">
           {children}
         </main>
         <Footer />
