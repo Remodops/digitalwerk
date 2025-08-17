@@ -25,7 +25,7 @@ export default function PrivacyContent() {
               Wilhelmstraße 73<br/>
               38100 Braunschweig<br/>
               Vertreten durch: Wanja Herkt<br/>
-              E-Mail: <a href="mailto:wanja@herkt.email" className="text-blue-600 hover:text-blue-800 underline">wanja@herkt.email</a>
+              E-Mail: <a href="mailto:info@digitalwerk-it.com" className="text-blue-600 hover:text-blue-800 underline">info@digitalwerk-it.com</a>
             </p>
           </div>
         </section>
@@ -329,7 +329,7 @@ export default function PrivacyContent() {
               Wilhelmstraße 73<br/>
               38100 Braunschweig<br/>
               Vertreten durch: Wanja Herkt<br/>
-              E-Mail: <a href="mailto:wanja@herkt.email" className="text-blue-600 hover:text-blue-800 underline">wanja@herkt.email</a>
+              E-Mail: <a href="mailto:info@digitalwerk-it.com" className="text-blue-600 hover:text-blue-800 underline">info@digitalwerk-it.com</a>
             </p>
           </div>
         </section>

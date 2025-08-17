@@ -39,7 +39,7 @@ export default function Page() {
               <p className="font-semibold text-neutral-900 mb-1">
                 Kontakt:
               </p>
-              <p>E-Mail: <a href="mailto:wanja@herkt.email" className="text-blue-600 hover:text-blue-800 underline">wanja@herkt.email</a></p>
+              <p>E-Mail: <a href="mailto:info@digitalwerk-it.com" className="text-blue-600 hover:text-blue-800 underline">info@digitalwerk-it.com</a></p>
             </div>
             
             <div>
