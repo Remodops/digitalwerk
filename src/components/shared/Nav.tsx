@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "/", label: "Start" },
@@ -24,6 +25,9 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" }) {
           {l.label}
         </Link>
       ))}
+      <div className="pl-2 ml-2 border-l border-neutral-200 dark:border-white/20">
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }

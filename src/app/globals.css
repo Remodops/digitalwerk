@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root { color-scheme: light dark; }
+html[data-theme="dark"] { color-scheme: dark; }
 
 /* Systemfonts, lokale Fonts später via next/font/local */
 body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-@media (prefers-color-scheme: dark) {
-  body { background-color: #0a0a0a; color: #e5e5e5; }
-}
+/* Standard Light */
+body { background-color: #ffffff; color: #0a0a0a; }
+/* Dark via data-theme oder .dark (Tailwind) */
+html[data-theme="dark"] body, .dark body { background-color: #0a0a0a; color: #e5e5e5; }
 
 /* Sanftes Scrollen für Ankerlinks */
 html { scroll-behavior: smooth; }

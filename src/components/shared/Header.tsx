@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Nav } from "./Nav";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 import { usePathname } from "next/navigation";
 
 export function Header() {
@@ -77,6 +78,7 @@ export function Header() {
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/referenzen">Referenzen</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/ueber-uns">Über uns</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/kontakt">Kontakt</Link></li>
+                <li className="mt-1 pt-2 border-t border-black/10"><ThemeToggle /></li>
               </ul>
             </nav>
           </div>
@@ -134,6 +136,7 @@ export function Header() {
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/referenzen">Referenzen</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/ueber-uns">Über uns</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/kontakt">Kontakt</Link></li>
+              <li className="mt-1 pt-2 border-t border-white/20"><ThemeToggle /></li>
             </ul>
           </nav>
         </div>
