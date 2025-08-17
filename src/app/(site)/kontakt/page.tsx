@@ -11,29 +11,13 @@ export const metadata = withPageMeta({ title: "Kontakt" });
 
 export default function Page() {
   return (
-    <Section title="Kontakt" subtitle="Wir melden uns innerhalb von 24 Stunden.">
+    <Section title="Kontakt" subtitle="Wir melden uns schnellstmöglich bei Ihnen.">
       <div className="space-y-8">
         <div className="max-w-2xl">
           {ENABLE_CONTACT_FORM ? (
             <ContactForm />
           ) : (
             <PlaceholderContactForm />
-          )}
-          {!ENABLE_CONTACT_FORM && (
-            <div className="mt-4 space-y-3">
-              <p className="text-sm text-neutral-700">
-                Am einfachsten erreichst du uns aktuell per E‑Mail oder WhatsApp Business:
-              </p>
-              <div className="inline-flex items-center gap-2 rounded-lg bg-neutral-50 px-3 py-2 border border-neutral-200">
-                <span className="text-neutral-600">✉️</span>
-                <Link 
-                  className="text-sm font-medium text-neutral-900 underline decoration-sky-500 underline-offset-2 hover:decoration-2" 
-                  href="mailto:hallo@digitalwerk.example"
-                >
-                  hallo@digitalwerk.example
-                </Link>
-              </div>
-            </div>
           )}
         </div>
         
@@ -62,10 +46,7 @@ export default function Page() {
 
 function PlaceholderContactForm() {
   return (
-    <form aria-describedby="contact-placeholder-note" className="max-w-lg space-y-4">
-      <p id="contact-placeholder-note" className="text-sm text-neutral-600">
-        Das Kontaktformular ist aktuell in Vorbereitung. Bitte nutze solange unsere E-Mail-Adresse oder WhatsApp Business.
-      </p>
+    <form className="max-w-lg space-y-4">
       <div>
         <label htmlFor="ph-name" className="block text-sm font-medium text-neutral-800">Name*</label>
         <Input id="ph-name" name="name" required aria-required="true" />
@@ -114,9 +95,6 @@ function PlaceholderContactForm() {
         <Button type="button" disabled className="opacity-50 cursor-not-allowed">
           Absenden
         </Button>
-        <p className="mt-2 text-xs text-neutral-500">
-          Das Formular ist noch nicht aktiv. Nutze bitte unsere E-Mail oder WhatsApp Business.
-        </p>
       </div>
     </form>
   );
