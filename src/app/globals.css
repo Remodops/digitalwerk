@@ -102,3 +102,14 @@ html { scroll-behavior: smooth; }
 /* Lightbox Close Button (war weiß) */
 .dark .bg-white\/90 { background-color: var(--surface-raised) !important; color: var(--text-primary) !important; }
 .dark .hover\:bg-white:hover { background-color: var(--surface-raised) !important; }
+
+/* Navbar (Unterseiten): bessere Lesbarkeit im Dark Mode */
+/* Hintergrund des Header-Containers (war bg-white/80) */
+.dark header .bg-white\/80 { background-color: var(--surface-raised) !important; }
+/* Unterstreichungs-Links im Header stets primär lesbar */
+.dark header nav[aria-label="Hauptnavigation"] a { color: var(--text-primary) !important; }
+.dark header nav[aria-label="Hauptnavigation"] a:hover { color: var(--text-primary) !important; }
+/* Hover-Hintergründe der Buttons im Header (Hamburger etc.) */
+.dark header .hover\:bg-black\/5:hover { background-color: var(--surface-raised) !important; }
+/* Fokus-Ring im Header */
+.dark header .focus\:ring-black\/20:focus { --tw-ring-color: var(--accent-outline) !important; }
