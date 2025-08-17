@@ -23,14 +23,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const item = cases.find((c) => c.slug === slug)!;
   return (
     <Section title={item.title} subtitle={item.description}>
-      <article className="prose prose-neutral max-w-none">
-        <h3>Problem</h3>
-        <p>{item.problem}</p>
-        <h3>Lösung</h3>
-        <p>{item.solution}</p>
-        <h3>Ergebnis</h3>
-        <p>{item.result}</p>
-      </article>
+      <div className="mt-4">
+        <a href={item.url} target="_blank" rel="noopener noreferrer" className="inline-block text-sm font-medium underline">Zur Website</a>
+      </div>
     </Section>
   );
 }

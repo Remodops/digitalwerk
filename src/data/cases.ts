@@ -3,6 +3,7 @@ export type CaseData = {
 	title: string;
 	imageSrc: string;
 	description: string;
+	url: string;
 	problem: string;
 	solution: string;
 	result: string;
@@ -14,6 +15,7 @@ export const cases: CaseData[] = [
 		title: "admin4me",
 		imageSrc: "/images/referenzen/admin4me.PNG",
 		description: "IT-Administrator- und Support",
+		url: "https://www.admin4me.de/",
 		problem: "Wenig Anfragen über die bestehende Webpräsenz.",
 		solution: "Neuer One‑Pager mit klarem Nutzenversprechen und Kontakt‑CTA.",
 		result: "+32 % Anfragen in 6 Wochen.",
@@ -23,6 +25,7 @@ export const cases: CaseData[] = [
 		title: "Hundepension Christiane Herkt",
 		imageSrc: "/images/referenzen/website_4pfoetchen.jpg",
 		description: "Hundepension",
+		url: "https://xn--4pftchen-p4a.net/",
 		problem: "Unklare Struktur, wichtige Infos versteckt.",
 		solution: "Übersichtliche Seitenstruktur, mobile Optimierung, schnelle Ladezeiten.",
 		result: "Höhere Sichtbarkeit und mehr Buchungsanfragen.",
@@ -32,6 +35,7 @@ export const cases: CaseData[] = [
 		title: "Lindigkeit | Mertens",
 		imageSrc: "/images/referenzen/website_lindigkeit-mertens.jpg",
 		description: "Rechtsanwalt, Kanzlei und Notariat",
+		url: "https://lindigkeit-partner.de/",
 		problem: "Veraltete Website, schwer auffindbare Leistungen.",
 		solution: "Neuaufbau mit klarer Navigation, Leistungsmodulen und Kontaktmöglichkeit.",
 		result: "Verbesserte Nutzerführung und messbar bessere Core Web Vitals.",

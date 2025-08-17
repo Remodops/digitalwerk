@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { CaseData } from '@/data/cases';
 
-export type CaseItem = Pick<CaseData, 'slug' | 'title' | 'imageSrc' | 'description' | 'problem' | 'solution' | 'result'>;
+export type CaseItem = Pick<CaseData, 'slug' | 'title' | 'imageSrc' | 'description' | 'url'>;
 
 type CasesGridProps = {
   items: CaseItem[];
@@ -64,12 +64,7 @@ export function CasesGrid({ items }: CasesGridProps) {
             <div className="p-6">
               <h3 className="text-lg font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm text-neutral-700">{c.description}</p>
-              <div className="mt-3 space-y-1 text-sm text-neutral-700">
-                <p><span className="font-medium">Problem:</span> {c.problem}</p>
-                <p><span className="font-medium">Lösung:</span> {c.solution}</p>
-                <p><span className="font-medium">Ergebnis:</span> {c.result}</p>
-              </div>
-              <Link href={`/referenzen/${c.slug}`} className="mt-4 inline-block text-sm font-medium underline">Zur Website</Link>
+              <Link href={c.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm font-medium underline">Zur Website</Link>
             </div>
           </div>
         ))}
