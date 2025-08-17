@@ -47,6 +47,14 @@ export function Header() {
   if (!isHome) {
     return (
       <header role="banner" className="sticky top-0 inset-x-0 z-50">
+        {open && (
+          <button
+            type="button"
+            aria-label="Menü schließen"
+            className="fixed inset-0 z-40 md:hidden bg-transparent"
+            onClick={() => setOpen(false)}
+          />
+        )}
         <div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur border-b border-neutral-200">
           <Link href="/" className="font-semibold text-neutral-900 text-lg sm:text-xl">Digitalwerk</Link>
           <div className="hidden md:block">
@@ -71,7 +79,7 @@ export function Header() {
         </div>
         {open && (
           <div className="px-4 sm:px-6 lg:px-8">
-            <nav className="mt-2 rounded-2xl bg-white/90 backdrop-blur ring-1 ring-black/10 p-3 text-sm text-neutral-800 md:hidden">
+            <nav className="relative z-50 mt-2 rounded-2xl bg-white/90 backdrop-blur ring-1 ring-black/10 p-3 text-sm text-neutral-800 md:hidden">
               <ul className="flex flex-col gap-2">
                 <li><Link ref={menuFirstLinkRef} onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/">Start</Link></li>
                 <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-black/5" href="/leistungen">Leistungen</Link></li>
@@ -92,6 +100,14 @@ export function Header() {
       role="banner"
       className={`${isScrolled ? "fixed top-0" : "absolute top-6 sm:top-8"} inset-x-0 z-50 transition-all`}
     >
+      {open && (
+        <button
+          type="button"
+          aria-label="Menü schließen"
+          className="fixed inset-0 z-40 md:hidden bg-transparent"
+          onClick={() => setOpen(false)}
+        />
+      )}
       <div
         className={
           `flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ` +
@@ -129,7 +145,7 @@ export function Header() {
       </div>
       {open && (
         <div className="px-4 sm:px-6 lg:px-8">
-          <nav className="mt-2 rounded-2xl bg-black/40 backdrop-blur-sm ring-1 ring-white/15 p-3 text-sm text-white/90 md:hidden">
+          <nav className="relative z-50 mt-2 rounded-2xl bg-black/40 backdrop-blur-sm ring-1 ring-white/15 p-3 text-sm text-white/90 md:hidden">
             <ul className="flex flex-col gap-2">
               <li><Link ref={menuFirstLinkRef} onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/">Start</Link></li>
               <li><Link onClick={() => setOpen(false)} className="block rounded px-3 py-2 hover:bg-white/10" href="/leistungen">Leistungen</Link></li>
