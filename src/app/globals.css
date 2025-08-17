@@ -3,20 +3,102 @@
 :root { color-scheme: light dark; }
 html[data-theme="dark"] { color-scheme: dark; }
 
+/* Farb-Variablen (Light Defaults) */
+:root {
+  --bg-page: #ffffff;
+  --bg-section: #f7f7f7;
+  --surface-card: #ffffff;
+  --surface-raised: #ffffff;
+  --border: #e5e5e5;
+  --text-primary: #0a0a0a;
+  --text-secondary: #404040;
+  --text-muted: #6b7280;
+  --accent: #111111;
+  --accent-hover: #171717;
+  --accent-outline: rgba(2, 132, 199, 0.35);
+  --shadow-elev: 0 8px 24px rgba(0,0,0,0.15);
+  --focus-outline: #0284c7;
+}
+
+/* Dark Mode Palette über .dark am html */
+html.dark {
+  --bg-page: #0B0F14;
+  --bg-section: #0F141A;
+  --surface-card: #141A22;
+  --surface-raised: #1A212B;
+  --border: #253041;
+  --text-primary: #E6EAF0;
+  --text-secondary: #B7C0CD;
+  --text-muted: #8A94A3;
+  --accent: #30C07A;
+  --accent-hover: #3ADA8D;
+  --accent-outline: rgba(48,192,122,0.35);
+  --shadow-elev: 0 8px 24px rgba(0,0,0,0.45);
+  --focus-outline: var(--accent-outline);
+}
+
 /* Systemfonts, lokale Fonts später via next/font/local */
 body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-/* Standard Light */
-body { background-color: #ffffff; color: #0a0a0a; }
-/* Dark via data-theme oder .dark (Tailwind) */
-html[data-theme="dark"] body, .dark body { background-color: #0a0a0a; color: #e5e5e5; }
+/* Grundflächen über Variablen */
+body { background-color: var(--bg-page); color: var(--text-primary); }
 
 /* Sanftes Scrollen für Ankerlinks */
 html { scroll-behavior: smooth; }
 
 /* Fokus klar sichtbar */
-*:focus { outline: 2px solid #0284c7; outline-offset: 2px; }
+*:focus { outline: 2px solid var(--focus-outline); outline-offset: 2px; }
 
 /* Reduzierte Bewegung respektieren */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+/* -------------------------------
+   Dark Mode Farb-Mappings (nur Farben)
+   Keine Änderungen an Layout/Abständen
+-------------------------------- */
+
+/* Streifen / Abschnitte (Startseite: bg-neutral-50) */
+.dark .bg-neutral-50 { background-color: var(--bg-section) !important; }
+
+/* Footer (dunkler Streifen) */
+.dark footer.bg-white { background-color: var(--bg-section) !important; }
+.dark footer .text-neutral-600 { color: var(--text-secondary) !important; }
+.dark footer a:hover { color: var(--text-primary) !important; }
+.dark footer { border-color: var(--border) !important; }
+
+/* Karten/Boxen und Rahmen */
+.dark .border { border-color: var(--border) !important; }
+.dark .border-neutral-200 { border-color: var(--border) !important; }
+.dark .border-neutral-300 { border-color: var(--accent) !important; }
+.dark .group.border, .dark .rounded-lg.border, .dark .rounded-xl.border { background-color: var(--surface-card) !important; box-shadow: var(--shadow-elev); }
+
+/* Typografie */
+.dark .text-neutral-900, .dark .text-neutral-800, .dark .text-black, .dark .text-white { color: var(--text-primary) !important; }
+.dark .text-neutral-700, .dark .text-neutral-600, .dark .text-neutral-500, .dark .text-neutral-200 { color: var(--text-secondary) !important; }
+.dark .text-neutral-400 { color: var(--text-muted) !important; }
+
+/* Links (z. B. „Mehr ansehen“) */
+.dark a.underline { color: var(--accent) !important; }
+.dark a.underline:hover { color: var(--accent-hover) !important; }
+
+/* Buttons – Primär (bg-black → Accent) */
+.dark .bg-black { background-color: var(--accent) !important; color: var(--bg-page) !important; }
+.dark .hover\:bg-neutral-900:hover { background-color: var(--accent-hover) !important; }
+.dark .hover\:bg-neutral-800:hover { background-color: var(--accent-hover) !important; }
+
+/* Buttons – Sekundär (Outline Weiß → transparent + Accent Border) */
+.dark .bg-white { background-color: transparent !important; }
+.dark .hover\:bg-neutral-50:hover { background-color: var(--surface-raised) !important; }
+.dark .text-black { color: var(--text-primary) !important; }
+/* gezielt Outline-Buttons mit neutral-200 Rahmen zu Accent einfärben (Startseite CTA) */
+.dark a.inline-flex.border.border-neutral-200.bg-white { border-color: var(--accent) !important; }
+
+/* Focus Ringe umlenken */
+.dark .focus\:ring-black:focus,
+.dark .focus\:ring-neutral-400:focus,
+.dark .focus\:ring-white:focus { --tw-ring-color: var(--accent-outline) !important; }
+
+/* Lightbox Close Button (war weiß) */
+.dark .bg-white\/90 { background-color: var(--surface-raised) !important; color: var(--text-primary) !important; }
+.dark .hover\:bg-white:hover { background-color: var(--surface-raised) !important; }
