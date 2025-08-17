@@ -144,6 +144,7 @@ export default function Page() {
             </div>
           ))}
         </div>
+        <p className="mt-3 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.</p>
         <p className="mt-4 text-sm text-neutral-600">Individuelle Projekte kalkuliere ich flexibel nach Umfang – die Pakete dienen zur Orientierung.</p>
       </Section>
       <Section title="Optionale Pakete" className="py-6 sm:py-8">
